@@ -1,0 +1,107 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    background-image: url('dlsu_bg.png');
+    background-size: cover;
+    background-position: center center; 
+    background-attachment: fixed;
+}
+
+.system-title {
+    font-size: 2rem; 
+    color: #27382A;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.system-semititle {
+    font-size: 2rem; 
+    color: #27382A;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.registration-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.registration-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    border: 2px solid #ccc;
+    border-radius: 5px; 
+    margin-bottom: 1rem;
+    box-shadow: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: #27382A;
+    outline: none;
+}
+
+.action-links {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.account-selection legend {
+	font-size: 1rem;
+	text-align: center;
+}
+
+.account-selection input {
+  margin: 0.5rem;
+  margin-left: 1rem;
+}
+
+.account-selection {
+	border: 2px solid #ccc;
+	border-radius: 5px;
+}
+
+.action-links a {
+    color: #27382A;
+    text-decoration: none;
+}
+
+.action-links a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.register-btn {
+    background-color: #27382A;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .register-card {
+        margin: 1rem;
+    }
+}

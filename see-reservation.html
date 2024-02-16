@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Reservation</title>
+  <link rel="stylesheet" href="see-reservation.css">
+</head>
+<body>
+  <header>
+    <h1>DLSU Lab Reservation System</h1>
+    <nav>
+        <ul>
+			<li><a href="view-slot-availability.html">View Slot Availability</a></li>
+			<li><a href="make-reservation.html">Make a Reservation</a></li>
+			<li><a href="see-reservation.html">See Reservations</a></li>
+			<li><a href="edit-reservation.html">Edit Reservations</a></li>
+			<li><a href="remove-reservation.html">Remove Reservation</a></li>
+			<li><a href="user-profile.html">User Profile Actions</a></li>
+			<li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="user-info">
+        <span>Currently Logged in As: <strong><span id="loggedInUser">Pierre Ramos</span></strong></span><br>
+        <span>Account Type: <strong><span id="accountType">Lab Technician</span></strong></span>
+    </div>
+  </header>
+  <main>
+    <h2>See Reservations</h2>
+    <div id="filterControls">
+        <label for="labFilter">Filter by Lab:</label>
+        <select id="labFilter">
+            <option value="0">All Labs</option>
+            <option value="1">Lab 1</option>
+            <option value="2">Lab 2</option>
+            <option value="3">Lab 3</option>
+        </select>
+        <label for="sortSelect">Sort By:</label>
+        <select id="sortSelect">
+            <option value="time">Time</option>
+            <option value="user">User</option>
+            <option value="seat">Seat</option>
+        </select>
+    </div><br>
+    <table id="reservationsTable">
+      <thead>
+        <tr>
+          <th>Lab No.</th>
+          <th>Time Slot</th>
+          <th>Seat No.</th>
+          <th>User</th>
+          <th>Date/Time of Request</th>
+          <th>Date/Time of Reservation</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </main>
+  <script src="see-reservation.js"></script>
+</body>
+</html>

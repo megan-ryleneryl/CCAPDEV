@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Reservation</title>
+  <link rel="stylesheet" href="user-profile.css">
+</head>
+<body>
+  <header>
+    <h1>DLSU Lab Reservation System</h1>
+    <nav>
+        <ul>
+			<li><a href="view-slot-availability.html">View Slot Availability</a></li>
+			<li><a href="make-reservation.html">Make a Reservation</a></li>
+			<li><a href="see-reservation.html">See Reservations</a></li>
+			<li><a href="edit-reservation.html">Edit Reservations</a></li>
+			<li><a href="remove-reservation.html">Remove Reservation</a></li>
+			<li><a href="user-profile.html">User Profile Actions</a></li>
+			<li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="user-info">
+        <span>Currently Logged in As: <strong><span id="loggedInUser">Pierre Ramos</span></strong></span><br>
+        <span>Account Type: <strong><span id="accountType">Lab Technician</span></strong></span>
+    </div>
+  </header>
+  <main>
+    <h2>User Profile Actions</h2>
+    <div class="profile-container">
+      <div class="profile-picture">
+        <img src="pierre.jpg" alt="Profile Photo" id="profilePhoto">
+      </div>
+      <div class="profile-details">
+        <h3 id="profileName">Pierre Ramos</h3>
+        <p>Contact Number: <span id="contactNumber">09123456789</span></p>
+        <p>Email: <span id="email">pierre.ramos@dlsu.edu.ph</span></p>
+        <p>Biography: <span id="biography">A lab technician at De La Salle University.</span></p>
+      </div>
+    </div>
+    <div class="profile-actions">
+      <button id="editProfileBtn">Edit Profile</button>
+      <button id="deleteAccountBtn">Delete Account</button>
+    </div><br>
+	<hr><br>
+    <table id="reservationsTable">
+      <thead>
+        <tr>
+          <th>Lab No.</th>
+          <th>Time Slot</th>
+          <th>Seat No.</th>
+          <th>User</th>
+          <th>Date/Time of Request</th>
+          <th>Date/Time of Reservation</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <div id="editProfileForm" class="popup">
+      <form id="profileForm">
+        <label for="profilePicture">Profile Picture:</label>
+        <input type="file" id="profilePictureInput" name="profilePicture">
+
+        <label for="profileName">Name:</label>
+        <input type="text" id="profileNameInput" name="name" value="Pierre Ramos">
+
+        <label for="contactNumber">Contact Number:</label>
+        <input type="text" id="contactNumberInput" name="contactNumber" value="09123456789">
+
+        <label for="email">Email:</label>
+        <input type="email" id="emailInput" name="email" value="pierre.ramos@dlsu.edu.ph">
+
+        <label for="biography">Biography:</label>
+        <textarea id="biographyInput" name="biography">A lab technician at De La Salle University.</textarea>
+
+        <button type="button" id="changePasswordBtn">Change Password</button><br>
+		<button type="button" id="cancelBtn" onclick="hideEditProfileForm()">Cancel</button>
+        <input type="submit" id="saveBtn" value="Save Changes">
+      </form>
+    </div>
+
+	<div id="currentPasswordPopup" class="popup">
+	  <p>Enter your current password to continue:</p>
+	  <input type="password" id="currentPasswordInput">
+	  <button type="button" id="confirmPasswordBtn">Confirm</button>
+	  <button type="button" onclick="hideCurrentPasswordPopup()">Cancel</button>
+	</div>
+
+    <div id="currentPasswordPopup" class="popup">
+      <p>Enter your current password:</p>
+      <input type="password" id="currentPasswordInput" placeholder="Current Password">
+      
+      <p>Enter your new password:</p>
+      <input type="password" id="newPasswordInput" placeholder="New Password">
+      
+      <div class="button-container">
+        <button type="button" id="confirmPasswordBtn" class="update-btn">Update Password</button>
+        <button type="button" onclick="hideCurrentPasswordPopup()" class="cancel-btn">Cancel</button>
+      </div>
+    </div>
+
+  </main>
+  <div id="deletePopup" class="popup">
+    <p>Are you sure you want to delete this account?</p>
+    <input type="password" id="confirmPassword" placeholder="Enter password to confirm">
+    <button id="confirmDelete">Delete</button>
+    <button id="cancelDelete">Cancel</button>
+  </div>
+  <script src="user-profile.js"></script>
+</body>
+</html>

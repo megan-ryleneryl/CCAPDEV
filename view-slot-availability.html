@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Lab Slot Availability</title>
+	<link rel="stylesheet" href="view-slot-availability.css">
+</head>
+
+<body>
+	<header>
+		<h1>DLSU Lab Reservation System</h1>
+		<nav>
+			<ul>
+				<li><a href="view-slot-availability.html">View Slot Availability</a></li>
+				<li><a href="make-reservation.html">Make a Reservation</a></li>
+				<li><a href="see-reservation.html">See Reservations</a></li>
+				<li><a href="edit-reservation.html">Edit Reservations</a></li>
+				<li><a href="remove-reservation.html">Remove Reservation</a></li>
+				<li><a href="user-profile.html">User Profile Actions</a></li>
+				<li><a href="index.html">Logout</a></li>
+			</ul>
+		</nav>
+		<div class="user-info">
+			<span>Currently Logged in As: <strong><span class="loggedInUser">Pierre Ramos</span></strong></span><br>
+			<span>Account Type: <strong><span class="accountType">Lab Technician</span></strong></span>
+		</div>
+	</header>
+	
+	<div class="booking-container">
+		<h2>View Lab Slot Availabilities</h2>
+		
+		<div class="search-interface">
+			<div class="input-group">
+				<div class="date-selector">
+					<label for="search-date">Select date:</label>
+					<input type="date" class="search-date" id="search-date">
+				</div>
+				<div class="lab-selector">
+					<label for="lab-dropdown">Choose a lab:</label>
+					<select class="lab-dropdown" id="lab-dropdown">
+					</select>
+				</div>
+				<div class="time-selector">
+					<label for="search-time">Select time:</label>
+					<select class="search-time" id="search-time">
+					</select>
+				</div>
+			</div>
+			<div class="search-button-container">
+				<button class="search-button">Search</button>
+			</div>
+		</div>
+		
+		<div class="time-slots-container">
+
+		</div>
+	</div>		
+	
+	<script src="view-slot-availability.js"></script>
+</body>
+</html>

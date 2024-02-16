@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - DLSU Lab Reservation System</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="register.css" rel="stylesheet">
+</head>
+<body>
+    <div class="registration-wrapper">
+        <div class="registration-card">
+            <h1 class="system-title text-center">DLSU Lab Reservation System - Register Account</h1>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <input type="email" id="registerEmail" class="form-control" placeholder="DLSU Email">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="registerPassword" class="form-control" placeholder="Password">
+                </div>
+				<fieldset class="form-group account-selection">
+					<legend>Select an Account Type:</legend>
+					
+					<input type="radio" id="student" name="account-type" value="student" checked />
+					<label for="student">Student</label><br>
+					
+					<input type="radio" id="lab-technician" name="account-type" value="lab-technician" checked />
+					<label for="lab-technician">Lab Technician</label>
+				</fieldset>
+                <div class="form-group action-links">
+                    <a href="index.html" class="already-account">Already have an account? Log in</a>
+                </div>                
+                <button type="submit" class="btn register-btn">Register</button>
+            </form>
+        </div>
+    </div>
+    <script src="register.js"></script>
+</body>
+</html>

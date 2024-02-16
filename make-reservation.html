@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Lab Slot Availability</title>
+	<link rel="stylesheet" href="make-reservation.css">
+	<script src="jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+	<header>
+		<h1>DLSU Lab Reservation System</h1>
+		<nav>
+			<ul>
+				<li><a href="view-slot-availability.html">View Slot Availability</a></li>
+				<li><a href="make-reservation.html">Make a Reservation</a></li>
+				<li><a href="see-reservation.html">See Reservations</a></li>
+				<li><a href="edit-reservation.html">Edit Reservations</a></li>
+				<li><a href="remove-reservation.html">Remove Reservation</a></li>
+				<li><a href="user-profile.html">User Profile Actions</a></li>
+				<li><a href="index.html">Logout</a></li>
+			</ul>
+		</nav>
+		<div class="user-info">
+			<span>Currently Logged in As: <strong><span class="loggedInUser">Pierre Ramos</span></strong></span><br>
+			<span>Account Type: <strong><span class="accountType">Lab Technician</span></strong></span>
+		</div>
+	</header>
+	
+	<div class="main-container">
+		<div class="booking-container">
+			<h2>View Lab Slot Availabilities</h2>
+			<span class="system-status">You are a <strong>Lab Technician</strong> reserving for <strong>a student</strong>.</span>
+			
+			<div>
+				<br>
+				<span class="lab-selector">
+					<label for="lab-dropdown">Choose a lab:</label>
+					<select class="lab-dropdown">
+					</select>
+				</span>
+				
+				<span class="date-selector">
+					<div class="selected-date"></div>
+			
+					<div class="calendar-container"></div>
+				</span>
+				
+			</div>
+			
+			<div class="time-slots-container">
+			</div>
+		</div>
+
+		<div class="checkout-container">
+			<div class="selected-slots">
+				<h3>Selected Slots:</h3>
+			</div>
+			<div class="username-form">
+				<label for="name">Input Student Name:</label>
+				<input type="text" class="name" name="name"></div>
+			<button class="proceed-button">Submit Reservation</button>
+		</div>
+	</div>
+	
+	<script src="make-reservation.js"></script>
+</body>
+</html>

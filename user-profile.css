@@ -1,0 +1,218 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 0.8em;
+    margin: 0;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #27382A;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 5px; 
+}
+
+nav ul li a {
+    color: #EBF2EC;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 5px 8px;
+}
+
+nav ul li a:hover, nav ul li a:focus {
+    color: lightblue;
+    background-color: #3A4A3A;
+}
+
+/* User Info Styles */
+.user-info {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Main Content Styles */
+main {
+  padding: 20px;
+}
+
+main h2 {
+	text-align: center;
+}
+
+.profile-container {
+    width: 50%;
+	background-color: #f4f4f4;
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px -4px #C1ACBA;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+  
+  .profile-picture {
+    flex: 0 0 150px;
+    padding-right: 20px;
+}
+
+.profile-picture img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-details h3 {
+    margin-top: 0;
+  }
+  
+  .profile-details, .profile-picture {
+	width: 100%;
+	}
+
+  .profile-actions {
+    text-align: center;
+  }
+  
+  .profile-actions button {
+    padding: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 40px;
+    border: 1px solid #ddd;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    border-radius: 10px;
+}
+
+.popup form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    align-items: center;
+}
+
+.popup label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.popup input[type="text"],
+.popup input[type="email"],
+.popup input[type="password"],
+.popup textarea,
+.popup input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.popup textarea {
+    height: 50px;
+}
+
+.popup button,
+.popup input[type="submit"],
+.popup button[type="button"] {
+    padding: 10px 15px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popup button:hover {
+    background-color: #3A4A3A;
+    opacity: 0.9;
+}
+
+/* Specific Button Styles */
+.popup input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#confirmPasswordBtn,
+.update-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#cancelBtn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .popup #changePasswordBtn {
+    background-color: #008CBA;
+    color: white;
+  }
+ 
+  .popup #saveBtn {
+    color: white;
+	padding: 10px 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #deletePopup {
+	  width: 30%;
+  }
+  
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table th {
+  background-color: #27382A;
+  color: white;
+}
