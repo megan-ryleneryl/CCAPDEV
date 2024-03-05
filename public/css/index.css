@@ -3,7 +3,7 @@ div#main-div {
     top: 40px;
     min-width: 1042px;
     width: 80%;
-    height: 90%;
+    height: 95%;
     overflow: hidden;
     border-radius: 10px;
     display: flex;
@@ -44,4 +44,14 @@ img#login-bg {
     text-align: center;
     z-index: 1;
     margin-right: 40px;
+}
+
+.submit:hover {
+    background-color: var(--dark-purple);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.submit {
+    width: 40%;
 }
