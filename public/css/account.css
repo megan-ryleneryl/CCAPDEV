@@ -1,0 +1,210 @@
+#account-banner {
+    padding: 0px;
+    margin: 0px;
+    height: 190px;
+}
+
+#account-banner img {
+    width: 100%;
+    height: 100%;
+}
+
+#account-banner {
+    position: relative;
+}
+
+#account-banner-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#user-actions-container {
+    padding: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 50px;
+}
+
+#user-actions-form {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+}
+
+#user-actions-form button {
+    border-radius: 8px;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+    width: 80%;
+    background-color: var(--purple);
+    font-family: var(--lalezar);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    align-items: center;
+    color: var(--white);
+}
+
+#user-actions-form button:hover,
+input[type="submit"]:hover {
+    background-color: var(--dark-purple);
+    cursor: pointer;
+}
+
+#user-pfp-div {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#user-pfp-div img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#user-pfp-upload-div {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+#user-name-div {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+#user-email-div {
+    grid-column-start: 4;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+#user-account-type-div {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+#user-password-div {
+    grid-column-start: 4;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+#user-logout-div {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 5;
+    grid-row-end: 6;
+}
+
+#user-bio-div {
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-start: 3;
+    grid-row-end: 5;
+}
+
+#user-bio-div textarea {
+    width: 640px;
+    height: 100px;
+    margin-left: 10px;
+    padding: 10px;
+    background-color: var(--gray);
+    border-radius: 8px;
+    border: none;
+    font-family: var(--roboto);
+    color: var(--dark-purple);
+
+}
+
+#user-actions-form input[type="submit"] {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 6;
+}
+
+#reservations-banner {
+    background-color: var(--dark-purple);
+    text-align: center;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#reservations-banner h2 {
+    color: var(--white);
+    font-size: 1.6em;
+}
+
+#reservations-table-container {
+    padding: 20px;
+    margin-bottom: 200px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+  
+table th, table td {
+    border: 1px solid var(--white);
+    padding: 8px;
+    text-align: center;
+}
+  
+table th {
+    background-color: var(--beige);
+    color: var(--dark-purple);
+}
+  
+table tbody tr:hover {
+    background-color: var(--white);
+}
+
+#delete-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#delete-div button {
+    border-radius: 8px;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+    width: 170px;
+    background-color: rgb(164, 17, 17);
+    font-family: var(--lalezar);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    align-items: center;
+    color: var(--white);
+}
+
+#delete-div button:hover {
+    background-color: rgb(107, 22, 22);
+    cursor: pointer;
+} 
