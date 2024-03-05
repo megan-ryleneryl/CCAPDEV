@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<head>
+    <title>SwiftSeats Reserve</title>
+    <link href="../public/css/global.css" rel="stylesheet">
+    <link href="../public/css/reserve.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed">
+</head>
+<body>
+    <main>
+        <header>
+            <div id="header-left">
+                <img src="../public/assets/swiftseats-logo.png" alt="swiftseats-logo" width="160px" height="90px">
+                <p id="account-type">Logged in as: Admin</p>
+            </div>
+            <div id="header-right">
+                <a class="nav-link" href="homepage.html">Home</a>
+                <a class="nav-link" href="reserve.html">Reserve</a>
+                <a class="nav-link" href="account.html">Account</a>
+            </div>
+        </header>
+
+        <section id="reserve-seats-banner">
+            <div id="reserve-seats-banner-div"><h2>Reserve Seats</h2></div>
+            <img src="../public/assets/reserve-bg.jpeg" alt="reserve-bg" width="1575px" height="210px">
+        </section>
+
+        <section id="main-container">
+            <div id="left-panel">
+                <div id="left-panel-filters">
+                    <p>Date Filters</p>
+                </div>
+                <div id="left-panel-timeslots">
+                    <p>Dynamically loaded timeslots</p>
+                </div>
+            </div>
+
+            <div id="right-panel">
+                <p class="label">Selected Slots:</p>
+                <p>Dynamically loaded slots</p>
+                <div id="username-form">
+                    <input type="text" name="username" id="username-input" placeholder="Student Name (Optional)"><br>
+                    <input type="submit" value="Make Reservation" class="submit">
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <h2>SwiftSeats</h2>
+            <p>SwiftSeats revolutionizes the reservation experience by providing a seamless platform that effortlessly connects users with their favorite dining spots, events, and activities, ensuring convenience and satisfaction with every booking. With a commitment to speed, efficiency, and user-centric design, SwiftSeats empowers individuals to save time and enjoy unforgettable experiences at the touch of a button.</p>
+        </footer>
+    </main>
+    <script src="../public/js/reserve.js"></script>
+</body>
+</html>

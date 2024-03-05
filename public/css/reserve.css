@@ -1,0 +1,51 @@
+#reserve-seats-banner {
+    padding: 0px;
+    margin: 0px;
+    height: 190px;
+}
+
+#reserve-seats-banner img {
+    width: 100%;
+    height: 100%;
+}
+
+#reserve-seats-banner {
+    position: relative;
+}
+
+#reserve-seats-banner-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.label {
+    font-weight: 700;
+}
+
+#main-container {
+    padding: 20px;
+    display: flex;
+}
+
+#left-panel {
+    flex: 0 0 70%;
+}
+
+#right-panel {
+    flex: 0 0 30%;
+}
+
+#left-panel-filters {
+    display: flex;
+    justify-content: space-around;
+}
+
+#left-panel-timeslots {
+    text-align: center;
+}
+
+input[type="submit"] {
+    width: 85%;
+}
