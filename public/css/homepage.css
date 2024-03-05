@@ -1,0 +1,70 @@
+#view-available-seats {
+    padding: 20px;
+}
+
+#homepage-banner,
+#view-seats-banner {
+    padding: 0px;
+    margin: 0px;
+    height: 190px;
+}
+
+#homepage-banner img,
+#view-seats-banner img {
+    width: 100%;
+    height: 100%;
+}
+
+#lab-info p {
+    margin-top: 0px;
+}
+
+#lab-info-top,
+#lab-info-bottom {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+#lab-info-middle {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+}
+
+#lab-info-top, 
+#lab-info-bottom {
+    background-color: var(--beige);
+}
+
+.lab-pic img {
+    width: 100%;
+    height: 100%;
+}
+
+.text {
+    padding: 30px;
+}
+
+#seats-toggle-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+#timeslots-div {
+    text-align: center;
+}
+
+#homepage-banner, 
+#view-seats-banner {
+    position: relative;
+}
+
+#our-labs-banner-div,
+#view-seats-banner-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+

@@ -13,6 +13,7 @@
 body {
     font-family: var(--roboto);
     font-size: 1em;
+    margin: 0px;
 }
 
 h1 {
@@ -60,4 +61,43 @@ input[type="submit"] {
 
 a {
     color: var(--purple);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--beige);
+    height: 75px;
+}
+
+#header-left, #header-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#header-left p {
+    margin-left: 20px;
+}
+
+header a {
+    margin: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px;
+}
+
+header a:hover {
+    background-color: #fbf0e2;
+    border-radius: 4px;
+    font-weight: 900;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: var(--beige);
+    padding: 30px;
 }
