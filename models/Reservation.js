@@ -2,12 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 /**
- * Schema for User Profile in MongoDB
+ * Schema for Reservations in MongoDB
  * 
- * id - Unique identifier for the user
- * bio - Bio of the user (long)
- * avatar - filepath of the user's profile picture
- * password - user's password
+ * reservationID - The unique identifier of the reservation (30001)
+ * timeslotID - The ID of the reserved timeslot (10001)
+ * userID - The ID of the reserving user (20001)
+ * requestDate - The date of the request (MM-DD-YYYY)
+ * requestTime - The time of the request (00:00AM)
  */
 const reservationSchema = new Schema({
     reservationID: { type: Number, required: true, unique: true },

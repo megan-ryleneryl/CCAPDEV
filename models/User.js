@@ -4,10 +4,13 @@ const Schema = mongoose.Schema;
 /**
  * Schema for User Profile in MongoDB
  * 
- * id - Unique identifier for the user
- * bio - Bio of the user (long)
- * avatar - filepath of the user's profile picture
- * password - user's password
+ * userID - The unique identifier for the user (20001)
+ * name - The name of the user (Firstname Lastname)
+ * accType - The account type (0 = Student, 1 = Lab Technician)
+ * email - The DLSU email address (user@dlsu.edu.ph)
+ * password - The password
+ * pfp - The profile picture href (../public/profile-pictures/pic.jpg)
+ * bio - The bio of the user (long text)
  */
 const userSchema = new Schema({
     userID: { type: Number, required: true, unique: true },
