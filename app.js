@@ -7,11 +7,11 @@ const mongoose = require('mongoose'); // Import Mongoose, allows you to connect 
 const dotenv = require('dotenv'); // Import dotenv, allows you to use .env file
 
 /* Imported Routes */
-const slotRoutes = require('./routes/slotRoutes');
+const timeslotRoutes = require('./routes/timeslotRoutes.js');
 const loginRoutes = require('./routes/loginRoutes.js');
-const regRoutes = require('./routes/regRoutes');
-const reserveRoutes = require('./routes/reserveRoutes'); 
-const accountRoutes = require('./routes/accountRoutes');
+const registerRoutes = require('./routes/registerRoutes.js');
+const reserveRoutes = require('./routes/reserveRoutes.js'); 
+const accountRoutes = require('./routes/accountRoutes.js');
 
 /* Initialize Express App */
 const app = express();
@@ -37,15 +37,15 @@ app.set("views", "./views"); // Set the directory for the views
 
 app.get('/', (req, res) => {
     console.log("User has visited localhost:3000.");
-    res.redirect('/home'); // Redirect user to /home
+    res.redirect('/timeslots'); // Redirect user to /timeslots
 });
 
 // App Routes
-app.use('/timeslots', slotRoutes); // Use the slotRoutes module for all routes starting with /timeslots
+app.use('/timeslots', timeslotRoutes); // Use the slotRoutes module for all routes starting with /timeslots
 app.use('/login', loginRoutes); // use the loginRoutes module for routes with /login
-app.use('/register', regRoutes); // use the regRoutes modules for routes with /register
+app.use('/register', registerRoutes); // use the registerRoutes modules for routes with /register
 app.use('/reserve', reserveRoutes); // Use the reserveRoutes module for all routes starting with /reserve
-app.use('/account', accountRoutes); // Use the accountRoutes module for all routes starting with /accountRoutes
+app.use('/account', accountRoutes); // Use the accountRoutes module for all routes starting with /account
 
 /* Connect to MongoDB and then Listen for Requests */
 /**
