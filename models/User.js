@@ -19,7 +19,8 @@ const userSchema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     pfp: { type: String, required: true, default: "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" },
-    bio: { type: String, required: true, default: "Hello! Please set a bio."}
+    bio: { type: String, required: true, default: "Hello! Please set a bio."},
+    reservations: { type: Array, required: true }
 })
 
 const User = mongoose.model('users', userSchema); // 'users' is the name of the collection in the database
