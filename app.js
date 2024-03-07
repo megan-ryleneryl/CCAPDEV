@@ -37,7 +37,7 @@ app.set("views", "./views"); // Set the directory for the views
 
 app.get('/', (req, res) => {
     console.log("User has visited localhost:3000.");
-    res.redirect('/timeslots'); // Redirect user to /timeslots
+    res.sendFile(__dirname + '\\' + 'index.html');
 });
 
 // App Routes
