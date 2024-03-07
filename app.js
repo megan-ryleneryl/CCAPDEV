@@ -53,7 +53,7 @@ app.use('/account', accountRoutes); // Use the accountRoutes module for all rout
  * 12345 is the password
  * megan-ccpadev-mco is the database name
  */
-const dbURI = 'mongodb+srv://admin:<password>@megan-apdev-mco.wwbdtyp.mongodb.net/?retryWrites=true&w=majority&appName=megan-apdev-mco'; 
+const dbURI = 'mongodb+srv://admin:12345@megan-apdev-mco.wwbdtyp.mongodb.net/?retryWrites=true&w=majority&appName=megan-apdev-mco'; 
 mongoose.connect(dbURI)
     .then((result) => {
         console.log("App connected to MongoDB Atlas megan-ccapdev-mco database.");
