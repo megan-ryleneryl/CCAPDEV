@@ -1,0 +1,202 @@
+[
+    {
+        "reservationID": "20001",
+        "lab": "1",
+        "date": "03-10-2024",
+        "timeslot": "9:00AM",
+        "seat": "1",
+        "userID": "10001",
+        "requestDate": "03-09-2024",
+        "requestTime": "4:32PM"
+    },
+    {
+        "reservationID": "20002",
+        "lab": "2",
+        "date": "03-11-2024",
+        "timeslot": "10:00AM",
+        "seat": "5",
+        "userID": "10005",
+        "requestDate": "03-10-2024",
+        "requestTime": "9:21AM"
+    },
+    {
+        "reservationID": "20003",
+        "lab": "3",
+        "date": "03-12-2024",
+        "timeslot": "11:30AM",
+        "seat": "3",
+        "userID": "10003",
+        "requestDate": "03-11-2024",
+        "requestTime": "2:14PM"
+    },
+    {
+        "reservationID": "20004",
+        "lab": "1",
+        "date": "03-13-2024",
+        "timeslot": "2:00PM",
+        "seat": "7",
+        "userID": "10004",
+        "requestDate": "03-12-2024",
+        "requestTime": "10:45AM"
+    },
+    {
+        "reservationID": "20005",
+        "lab": "2",
+        "date": "03-14-2024",
+        "timeslot": "3:30PM",
+        "seat": "2",
+        "userID": "10005",
+        "requestDate": "03-13-2024",
+        "requestTime": "8:56AM"
+    },
+    {
+        "reservationID": "20006",
+        "lab": "3",
+        "date": "03-15-2024",
+        "timeslot": "9:30AM",
+        "seat": "10",
+        "userID": "10001",
+        "requestDate": "03-14-2024",
+        "requestTime": "1:23PM"
+    },
+    {
+        "reservationID": "20007",
+        "lab": "1",
+        "date": "03-16-2024",
+        "timeslot": "11:00AM",
+        "seat": "4",
+        "userID": "10000",
+        "requestDate": "03-15-2024",
+        "requestTime": "11:09AM"
+    },
+    {
+        "reservationID": "20008",
+        "lab": "2",
+        "date": "03-10-2024",
+        "timeslot": "1:30PM",
+        "seat": "6",
+        "userID": "10003",
+        "requestDate": "03-09-2024",
+        "requestTime": "2:50PM"
+    },
+    {
+        "reservationID": "20009",
+        "lab": "3",
+        "date": "03-11-2024",
+        "timeslot": "4:00PM",
+        "seat": "9",
+        "userID": "10004",
+        "requestDate": "03-10-2024",
+        "requestTime": "10:15AM"
+    },
+    {
+        "reservationID": "20010",
+        "lab": "1",
+        "date": "03-12-2024",
+        "timeslot": "9:00AM",
+        "seat": "8",
+        "userID": "10005",
+        "requestDate": "03-11-2024",
+        "requestTime": "3:27PM"
+    },
+    {
+        "reservationID": "20011",
+        "lab": "2",
+        "date": "03-13-2024",
+        "timeslot": "10:30AM",
+        "seat": "3",
+        "userID": "10001",
+        "requestDate": "03-12-2024",
+        "requestTime": "8:12AM"
+    },
+    {
+        "reservationID": "20012",
+        "lab": "3",
+        "date": "03-14-2024",
+        "timeslot": "12:00PM",
+        "seat": "1",
+        "userID": "10005",
+        "requestDate": "03-13-2024",
+        "requestTime": "5:44PM"
+    },
+    {
+        "reservationID": "20013",
+        "lab": "1",
+        "date": "03-15-2024",
+        "timeslot": "2:30PM",
+        "seat": "5",
+        "userID": "10003",
+        "requestDate": "03-14-2024",
+        "requestTime": "9:58AM"
+    },
+    {
+        "reservationID": "20014",
+        "lab": "2",
+        "date": "03-16-2024",
+        "timeslot": "3:00PM",
+        "seat": "2",
+        "userID": "10004",
+        "requestDate": "03-15-2024",
+        "requestTime": "12:45PM"
+    },
+    {
+        "reservationID": "20015",
+        "lab": "3",
+        "date": "03-10-2024",
+        "timeslot": "9:30AM",
+        "seat": "10",
+        "userID": "10005",
+        "requestDate": "03-09-2024",
+        "requestTime": "11:20AM"
+    },
+    {
+        "reservationID": "20016",
+        "lab": "1",
+        "date": "03-11-2024",
+        "timeslot": "11:00AM",
+        "seat": "4",
+        "userID": "10001",
+        "requestDate": "03-10-2024",
+        "requestTime": "3:02PM"
+    },
+    {
+        "reservationID": "20017",
+        "lab": "2",
+        "date": "03-12-2024",
+        "timeslot": "1:30PM",
+        "seat": "7",
+        "userID": "10000",
+        "requestDate": "03-11-2024",
+        "requestTime": "8:11AM"
+    },
+    {
+        "reservationID": "20018",
+        "lab": "3",
+        "date": "03-13-2024",
+        "timeslot": "4:00PM",
+        "seat": "9",
+        "userID": "10003",
+        "requestDate": "03-12-2024",
+        "requestTime": "2:33PM"
+    },
+    {
+        "reservationID": "20019",
+        "lab": "1",
+        "date": "03-14-2024",
+        "timeslot": "9:00AM",
+        "seat": "8",
+        "userID": "10004",
+        "requestDate": "03-13-2024",
+        "requestTime": "11:56AM"
+    },
+    {
+        "reservationID": "20020",
+        "lab": "2",
+        "date": "03-15-2024",
+        "timeslot": "10:30AM",
+        "seat": "3",
+        "userID": "10005",
+        "requestDate": "03-14-2024",
+        "requestTime": "7:48AM"
+    }
+]

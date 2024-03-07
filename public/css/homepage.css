@@ -46,11 +46,6 @@
     padding: 30px;
 }
 
-#seats-toggle-div {
-    display: flex;
-    justify-content: space-around;
-}
-
 #timeslots-div {
     text-align: center;
 }
@@ -68,3 +63,28 @@
     transform: translate(-50%, -50%);
 }
 
+#search-button-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background-color: var(--purple);
+    font-family: var(--lalezar);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    color: var(--white);
+    width: 20%;
+}
+
+button:hover {
+    background-color: var(--dark-purple);
+    color: var(--white);
+    cursor: pointer;
+}

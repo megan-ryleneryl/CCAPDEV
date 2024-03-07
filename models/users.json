@@ -1,0 +1,51 @@
+[
+    {
+        "userID": "10001",
+        "name": "Maria Reyes",
+        "accType": "0",
+        "email": "maria_reyes@dlsu.edu.ph",
+        "password": "pass1234",
+        "pfp": "../public/profile-pictures/user-pfp.png",
+        "bio": "Just a CCS girlie!"
+    },
+
+    {
+        "userID": "10002",
+        "name": "Pierre Ramos",
+        "accType": "1",
+        "email": "pierre.ramos@dlsu.edu.ph",
+        "password": "12345",
+        "pfp": "../public/profile-pictures/user-pfp.png",
+        "bio": "As a dedicated lab technician and admin, I ensure the smooth operation and organization of our cutting-edge computer labs, providing technical support and maintaining a collaborative environment for innovation to flourish. With a passion for technology and a meticulous attention to detail, I strive to empower our users and facilitate their exploration of the digital frontier."
+    },
+
+    {
+        "userID": "10003",
+        "name": "Pedro Reyes",
+        "accType": "0",
+        "email": "pedro_reyes@dlsu.edu.ph",
+        "password": "studySmart",
+        "pfp": "../public/profile-pictures/user-pfp.png",
+        "bio": "A fervent environmental advocate merging my passion for environmental science with grassroots activism to foster positive change within my community."
+    },
+
+    {
+        "userID": "10004",
+        "name": "Sofia Rivera",
+        "accType": "0",
+        "email": "sofia_rivera@dlsu.edu.ph",
+        "password": "TWILIGHTsparkle",
+        "pfp": "../public/profile-pictures/user-pfp.png",
+        "bio": "A STEM enthusiast deeply immersed in robotics, using my projects and advocacy to inspire diversity and innovation in the field."
+    },
+
+    {
+        "userID": "10005",
+        "name": "Diego Garcia",
+        "accType": "0",
+        "email": "diego_garcia@dlsu.edu.ph",
+        "password": "nargizz1060",
+        "pfp": "../public/profile-pictures/user-pfp.png",
+        "bio": "A versatile artist exploring boundless creativity by fusing traditional techniques with modern mediums, crafting captivating visual narratives that challenge conventional perspectives."
+    }
+]

@@ -11,7 +11,7 @@
         <header>
             <div id="header-left">
                 <img src="../public/assets/swiftseats-logo.png" alt="swiftseats-logo" width="160px" height="90px">
-                <p id="account-type">Logged in as: Admin</p>
+                <p id="account-type">Logged in as: {{Admin}}</p>
             </div>
             <div id="header-right">
                 <a class="nav-link" href="homepage.html">Home</a>
@@ -27,7 +27,7 @@
 
         <section id="user-actions-container">
             <form id="user-actions-form" action="saveUserChanges()">
-                <div id="user-pfp-div"> <img src="../public/assets/user-pfp.png" alt="user-pfp"> </div>
+                <div id="user-pfp-div"> <img src="../public/profile-pictures/user-pfp.png" alt="user-pfp"> </div>
                 <div id="user-pfp-upload-div"> <button id="upload-pfp" onclick="openFileUpload()">Upload New PFP</button> </div>
                 <div id="user-name-div"> <input type="text" name="user-name" placeholder="Pierre Ramos" disabled> </div>
                 <div id="user-email-div"> <input type="text" name="user-email" placeholder="pierre.ramos@dlsu.edu.ph" disabled> </div>
@@ -44,6 +44,7 @@
         </section>
 
         <section id="reservations-table-container">
+            <p>TODO: Replace this table with hbs</p> <br>
             <table id="reservations">
                 <thead>
                   <tr>
@@ -57,6 +58,12 @@
                 <tbody>
                 </tbody>
               </table>
+        </section>
+
+        <section id="user-carousel">
+            <div id="user-carousel-div">
+                <p>TODO: Replace with hbs for card layout</p>
+            </div>
         </section>
 
         <div id="delete-div"> 

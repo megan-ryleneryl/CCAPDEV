@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 /**
  * Schema for User Profile in MongoDB
  * 
- * userID - The unique identifier for the user (20001)
+ * userID - The unique identifier for the user (10001)
  * name - The name of the user (Firstname Lastname)
  * accType - The account type (0 = Student, 1 = Lab Technician)
  * email - The DLSU email address (user@dlsu.edu.ph)
@@ -19,8 +19,7 @@ const userSchema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     pfp: { type: String, required: true, default: "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" },
-    bio: { type: String, required: true, default: "Hello! Please set a bio."},
-    reservations: { type: Array, required: true }
+    bio: { type: String, required: true, default: "Hello! Please set a bio."}
 })
 
 const User = mongoose.model('users', userSchema); // 'users' is the name of the collection in the database
