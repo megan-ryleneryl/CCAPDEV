@@ -10,18 +10,17 @@ const storage = multer.diskStorage({
     cb(null, '../public/profile-pictures/');
   },
   filename: function (req, file, cb) {
-    // You can customize the filename here if needed
+    // Can customize the filename here if needed
     cb(null, file.originalname);
   }
 });
 
 const upload = multer({ storage: storage });
 
-
 /* Import Controllers */
 const accountController = require('../controllers/accountController');
 
 // /* Define Routes */
-// router.get('/:id', userController.getUserByID); // For displaying a specific user
-// router.get('/:id/edit', userController.getEditPageByUserID);
-// router.post('/:id/edit', upload.single('editedAvatar'), userController.editUser);
+router.get('/:id', accountController.getUserByID); // For displaying a specific user
+router.get('/:id/edit', accountController.getEditPageByUserID);
+router.post('/:id/edit', upload.single('editedAvatar'), accountController.editUser);

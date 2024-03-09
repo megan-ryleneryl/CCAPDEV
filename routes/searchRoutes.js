@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = router; // Export router so it can be used in app.js
 
 /* Import Controllers */
-const reserveController = require('../controllers/reserveController');
+const searchController = require('../controllers/searchController');
 
 /* Define Routes */
-router.post('/submit-reservation', reserveController.makeReservation); // For submitting all reservation slots
+router.post('/search-results', searchController.getTimeslotByQuery); 

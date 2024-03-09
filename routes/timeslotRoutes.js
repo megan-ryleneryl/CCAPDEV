@@ -7,4 +7,4 @@ module.exports = router; // Export router so it can be used in app.js
 const timeslotController = require('../controllers/timeslotController');
 
 /* Define Routes */
-router.get('/', timeslotController.getAllTimeslots); // User visits /timeslots
+router.get('/', timeslotController.getAllReservations); // User visits /timeslots

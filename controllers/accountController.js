@@ -1,84 +1,78 @@
-// //TODO - config this file
+/* Import Models */
+const User = require('../models/User');
+const Reservation = require('../models/Reservation');
 
-// /* Import Models */
-// const User = require('../models/User');
-// const Review = require('../models/Review');
+/* Define Functions */
+const getUserByID = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const userResult = await User.findById(id).lean();
+        // console.log(userResult);
 
-// /* Define Functions */
-// const getUserByID = async (req, res) => {
-//     try {
-//         const id = req.params.id;
-//         const userResult = await User.findById(id).lean();
-//         // console.log(userResult);
+        if (!userResult) {
+            console.log('User not found');
+            return;
+        }
 
-//         if (!userResult) {
-//             res.render('../views/404.hbs', {
-//                 title: "404"
-//             });
+        const reviewResult = await Review.find({userID: id}).sort({ _id: -1 }).lean();
+        // console.log(reviewResult);
 
-//             return;
-//         }
+        res.render('../views/userprofile.hbs', {
+            title: userResult._id,
+            user: userResult,
+            review: reviewResult
+        });
+    } catch (err) {
+        console.log (err);
+    }
+}
 
-//         const reviewResult = await Review.find({userID: id}).sort({ _id: -1 }).lean();
-//         // console.log(reviewResult);
+const getEditPageByUserID = (req, res) => {
+    console.log("getEditPageByUserID called");
+    console.log(req.params);
 
-//         res.render('../views/userprofile.hbs', {
-//             title: userResult._id,
-//             stylesheets: ["global.css", "homepage.css", "userprofile.css"],
-//             user: userResult,
-//             review: reviewResult
-//         });
-//     } catch (err) {
-//         console.log (err);
-//     }
-// }
+    const userID = req.params.id;
 
-// const getEditPageByUserID = (req, res) => {
-//     console.log("getEditPageByUserID called");
-//     console.log(req.params);
+    User.findById(userID).lean()
+        .then((result) => {
+            console.log(result);
+            res.render('../views/editUserProfile.hbs', {
+                title: "Edit Profile",
+                stylesheets: ["global.css", "homepage.css", "userprofile.css"],
+                user: result
+            })
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
 
-//     const userID = req.params.id;
+const editUser = (req, res) => {
+    const userID = req.params.id.toString();
+    const newBio = req.body.editedBio.toString();
+    let avatarPath = "";
 
-//     User.findById(userID).lean()
-//         .then((result) => {
-//             console.log(result);
-//             res.render('../views/editUserProfile.hbs', {
-//                 title: "Edit Profile",
-//                 stylesheets: ["global.css", "homepage.css", "userprofile.css"],
-//                 user: result
-//             })
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
-// }
+    if (req.file) {
+        avatarPath = '/userPfp/' + req.file.originalname; // Set the image path
+        console.log("Uploaded to" + avatarPath);
+    } else {
+        avatarPath = req.body.originalAvatar;
+    }
 
-// const editUser = (req, res) => {
-//     const userID = req.params.id.toString();
-//     const newBio = req.body.editedBio.toString();
-//     let avatarPath = "";
+    User.findByIdAndUpdate(userID, {
+        bio: newBio,
+        avatar: avatarPath
+    })
+        .then((result) => {
+            res.redirect('/users/' + userID);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
 
-//     if (req.file) {
-//         avatarPath = '/userPfp/' + req.file.originalname; // Set the image path
-//         console.log("Uploaded to" + avatarPath);
-//     } else {
-//         avatarPath = req.body.originalAvatar;
-//     }
-
-//     User.findByIdAndUpdate(userID, {
-//         bio: newBio,
-//         avatar: avatarPath
-//     })
-//         .then((result) => {
-//             res.redirect('/users/' + userID);
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
-// }
-
-// module.exports = {
-//     getUserByID,
-//     getEditPageByUserID,
-//     editUser
-// }
+module.exports = {
+    getUserByID,
+    getEditPageByUserID,
+    editUser
+}
