@@ -1,37 +1,25 @@
-<!DOCTYPE html> 
-<head>
-    <title>SwiftSeats Login</title>
-    <link href="../public/css/global.css" rel="stylesheet">
-    <link href="../public/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed">
-</head>
-<body>
-    <main>
-        <div id="main-div">
-            <div id="login-form-div">
-                <img src="../public/assets/swiftseats-logo.png" alt="swiftseats-logo" width="160px" height="90px">
-                <h2>Login</h2>
-                <form action="homepage.hbs">
-                    <input type="email" name="email" id="email" placeholder="Email" required><br>
-                    <input type="password" name="password" id="password" placeholder="Password" required><br>
-                    <input type="submit" value="Login" class="submit">
-                    <span id="remember-me">
-                        <input type="checkbox" name="remember-me" id="remember-me">
-                        <label for="remember-me">Remember Me</label>
-                    </span>
-                </form><br>
-                <p>Don't have an account? <a href="register.hbs">Sign up</a></p>
-            </div>
-            <div id="login-bg-div">
-                <img id="login-bg" src="../public/assets/login-bg.jpg" alt="login-bg" width="1025px" height="840px">
-                <span id="overlay">    
-                    <h1>Welcome back!</h1>
-                    <h2>Looking for a seat?</h2>
+<main>
+    <div id="main-div">
+        <div id="login-form-div">
+            <img src="../public/assets/swiftseats-logo.png" alt="swiftseats-logo" width="160px" height="90px">
+            <h2>Login</h2>
+            <form action="homepage.hbs">
+                <input type="email" name="email" id="email" placeholder="Email" required><br>
+                <input type="password" name="password" id="password" placeholder="Password" required><br>
+                <input type="submit" value="Login" class="submit">
+                <span id="remember-me">
+                    <input type="checkbox" name="remember-me" id="remember-me">
+                    <label for="remember-me">Remember Me</label>
                 </span>
-            </div>
-        </div> 
-    </main>
-    <script src="../public/js/index.js"></script>
-</body>
-</html>
+            </form><br>
+            <p>Don't have an account? <a href="register.hbs">Sign up</a></p>
+        </div>
+        <div id="login-bg-div">
+            <img id="login-bg" src="../public/assets/login-bg.jpg" alt="login-bg" width="1025px" height="840px">
+            <span id="overlay">    
+                <h1>Welcome back!</h1>
+                <h2>Looking for a seat?</h2>
+            </span>
+        </div>
+    </div> 
+</main>

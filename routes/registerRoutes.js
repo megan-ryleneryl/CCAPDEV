@@ -21,10 +21,11 @@ router.post('/', upload.single('registerAvatar'), (req, res) => {
     registerController.uploadUser(req, res);
 });
 
-
 router.get('/', (req, res) => {
     console.log('User is Registering an Account')
     res.render('../views/register.hbs', {
-        title: "Register an Account"
+        title: "Register an Account",
+        stylesheets: ["register.css"],
+        layout: "bodyOnly.hbs"
     })
 })

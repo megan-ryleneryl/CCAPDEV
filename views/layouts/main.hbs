@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{> head}}
+
+    {{!-- Unique Stylesheet/s for Page --}}
+    {{!-- Pass a stylesheets array to this .hbs file using res.render() --}}
+    {{#if stylesheets}}
+        {{#each stylesheets}}
+            <link rel="stylesheet" href="/css/{{this}}">
+        {{/each}}
+    {{/if}}
+    
+    <title>{{title}}</title>
+</head>
+<body>
+    {{> navbar}}
+
+    {{{body}}}
+
+    {{> footer}}
+
+    {{!-- Include JavaScript files --}}
+    {{#if javascriptFiles}}
+        {{#each javascriptFiles}}
+            <script src="/js/{{this}}.js"></script>
+        {{/each}}
+    {{/if}}
+</body>
+</html> 
