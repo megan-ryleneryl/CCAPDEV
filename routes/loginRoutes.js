@@ -13,8 +13,10 @@ router.post('/', loginController.loginUser, (req, res) =>{
 router.get('/', (req, res) => {
     console.log('User is Logging In')
     res.render('../views/index.hbs', {
-        title: "User Login",
-        stylesheets: "./css/index.css",
-        layout: "layouts/bodyOnly.hbs"
+        layout: 'bodyOnly.hbs', // Layout file to use
+        title: 'User Login', // Title of the page
+        css: ['index.css'], // Array of CSS files to include
+        js: ['index.js'], // Array of JavaScript files to include
+        view: 'index' // View file to use
     })
 })

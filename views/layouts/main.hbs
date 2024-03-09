@@ -5,8 +5,8 @@
 
     {{!-- Unique Stylesheet/s for Page --}}
     {{!-- Pass a stylesheets array to this .hbs file using res.render() --}}
-    {{#if stylesheets}}
-        {{#each stylesheets}}
+    {{#if css}}
+        {{#each css}}
             <link rel="stylesheet" href="/css/{{this}}">
         {{/each}}
     {{/if}}
@@ -21,9 +21,9 @@
     {{> footer}}
 
     {{!-- Include JavaScript files --}}
-    {{#if javascriptFiles}}
-        {{#each javascriptFiles}}
-            <script src="/js/{{this}}.js"></script>
+    {{#if js}}
+        {{#each js}}
+            <script src="/js/{{this}}"></script>
         {{/each}}
     {{/if}}
 </body>

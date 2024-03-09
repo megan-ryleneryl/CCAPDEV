@@ -1,7 +1,7 @@
 <main>
     <section id="reserve-seats-banner">
         <div id="reserve-seats-banner-div"><h2>Reserve Seats</h2></div>
-        <img src="../public/assets/reserve-bg.jpeg" alt="reserve-bg" width="1575px" height="210px">
+        <img src="./assets/reserve-bg.jpeg" alt="reserve-bg" width="1575px" height="210px">
     </section>
 
     <section id="main-container">
@@ -17,10 +17,10 @@
         <div id="right-panel">
             <p class="label">Selected Slots:</p>
             <p>Dynamically loaded slots</p>
-            <div id="username-form">
+            <form id="username-form" action="/submit-reservation">
                 <input type="text" name="username" id="username-input" placeholder="Student Name (Optional)"><br>
                 <input type="submit" value="Make Reservation" class="submit">
-            </div>
+            </form>
         </div>
     </section>
 </main>

@@ -49,3 +49,8 @@
 input[type="submit"] {
     width: 85%;
 }
+
+input[type="submit"]:hover {
+    background-color: var(--dark-purple);
+    cursor: pointer;
+}

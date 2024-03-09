@@ -33,6 +33,10 @@ h2 {
     margin: 0%;
 }
 
+#account-type {
+    color: var(--dark-purple);
+}
+
 input {
     background-color: var(--gray);
     border-radius: 8px;
@@ -63,7 +67,7 @@ a {
     color: var(--purple);
 }
 
-#header {
+header {
     display: flex;
     justify-content: space-between;
     background-color: var(--beige);
@@ -82,14 +86,14 @@ a {
     margin-left: 20px;
 }
 
-#header a {
+header a {
     margin: 10px;
     font-weight: 700;
     text-decoration: none;
     padding: 10px;
 }
 
-#header a:hover {
+header a:hover {
     background-color: #fbf0e2;
     border-radius: 4px;
     font-weight: 900;
@@ -97,7 +101,7 @@ a {
     transform: scale(1.05);
 }
 
-#footer {
+footer {
     background-color: var(--beige);
     padding: 30px;
 }

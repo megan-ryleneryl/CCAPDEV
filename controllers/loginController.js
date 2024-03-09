@@ -2,6 +2,7 @@
 const User = require('../models/User.js');
 
 async function loginUser(req, res) {
+    console.log("made it in");
     const loginEmail = req.body.email; //double check if this matches
     const loginPassword = req.body.password; //double check if this matches
         try {
@@ -10,7 +11,7 @@ async function loginUser(req, res) {
           if (user && (loginPassword == user.password)) {
             // Successful login
             console.log('Login Attempt Made')
-            res.status(200).redirect('/');
+            res.status(200).redirect('/homepage');
         } else {
             // Invalid credentials
             res.status(401).json({ message: 'Invalid username or password' });

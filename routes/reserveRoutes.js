@@ -7,4 +7,5 @@ module.exports = router; // Export router so it can be used in app.js
 const reserveController = require('../controllers/reserveController');
 
 /* Define Routes */
-router.post('/submit-reservation', reserveController.makeReservation); // For submitting all reservation slots
+router.get('/', reserveController.makeReservation); // For loading the page
+router.post('/submit-reservation', reserveController.submitReservation); // For submitting all reservation slots

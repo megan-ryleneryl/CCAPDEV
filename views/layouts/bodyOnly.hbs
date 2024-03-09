@@ -2,15 +2,15 @@
 <html>
 <head>
     {{> head}}
-
+    
     {{!-- Unique Stylesheet/s for Page --}}
     {{!-- Pass a stylesheets array to this .hbs file using res.render() --}}
-    {{#if stylesheets}}
-        {{#each stylesheets}}
-            <link rel="stylesheet" href="/css/{{this}}">
+    {{#if css}}
+        {{#each css}}
+            <link rel="stylesheet" href="./css/{{this}}">
         {{/each}}
     {{/if}}
-    
+
     <title>{{title}}</title>
 </head>
 <body>
