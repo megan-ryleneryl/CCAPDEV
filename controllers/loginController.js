@@ -2,11 +2,11 @@
 const User = require('../models/User.js');
 
 async function loginUser(req, res) {
-    const loginUsername = req.body.username; //double check if this matches
+    const loginEmail = req.body.email; //double check if this matches
     const loginPassword = req.body.password; //double check if this matches
         try {
         // Find the user in the database
-        const user = await User.findOne({ _id: loginUsername });
+        const user = await User.findOne({ email: loginEmail });
           if (user && (loginPassword == user.password)) {
             // Successful login
             console.log('Login Attempt Made')

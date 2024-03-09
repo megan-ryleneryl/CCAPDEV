@@ -5,6 +5,7 @@ const express = require('express'); // Import Express, allows you to create a se
 const exphbs = require('express-handlebars'); // Import Express-Handlebars, allows you to create views
 const mongoose = require('mongoose'); // Import Mongoose, allows you to connect to MongoDB
 const dotenv = require('dotenv'); // Import dotenv, allows you to use .env file
+const bodyParser = require('body-parser');
 
 /* Imported Routes */
 const timeslotRoutes = require('./routes/timeslotRoutes.js');
@@ -19,7 +20,8 @@ const app = express();
 /* Middleware */
 app.use(express.static(__dirname + "/public")); // Set static folder
 app.use(express.urlencoded({ extended: true })); // Allows you to access req.body for POST routes
-app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // Use Handlebars as the view engine
 const hbs = exphbs.create({
     extname: 'hbs',
@@ -41,9 +43,9 @@ app.get('/', (req, res) => {
 });
 
 // App Routes
-app.use('/timeslots', timeslotRoutes); // Use the slotRoutes module for all routes starting with /timeslots
-app.use('/login', loginRoutes); // use the loginRoutes module for routes with /login
-app.use('/register', registerRoutes); // use the registerRoutes modules for routes with /register
+app.use('/timeslots', timeslotRoutes); // Use the timeslotRoutes module for all routes starting with /timeslots
+app.use('/login', loginRoutes); // Use the loginRoutes module for routes with /login
+app.use('/register', registerRoutes); // Use the registerRoutes modules for routes with /register
 app.use('/reserve', reserveRoutes); // Use the reserveRoutes module for all routes starting with /reserve
 app.use('/account', accountRoutes); // Use the accountRoutes module for all routes starting with /account
 

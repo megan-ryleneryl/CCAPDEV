@@ -9,7 +9,7 @@ const registerController = require('../controllers/registerController');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: function (req, file, cb){
-        cb(null, 'public/userPfp/');
+        cb(null, 'public/profile-pictures/');
     },
     filename: function (req, file, cb){
         cb(null, file.originalname);
@@ -23,8 +23,8 @@ router.post('/', upload.single('registerAvatar'), (req, res) => {
 
 
 router.get('/', (req, res) => {
-    console.log('User is Registering and Account')
-    res.render('../views/register.html', { //might have to change to .hbs
+    console.log('User is Registering an Account')
+    res.render('../views/register.hbs', {
         title: "Register an Account"
     })
 })
