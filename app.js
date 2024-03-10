@@ -13,6 +13,7 @@ const loginRoutes = require('./routes/loginRoutes.js');
 const registerRoutes = require('./routes/registerRoutes.js');
 const reserveRoutes = require('./routes/reserveRoutes.js'); 
 const accountRoutes = require('./routes/accountRoutes.js');
+const searchRoutes = require('./routes/searchRoutes.js');
 
 /* Initialize Express App */
 const app = express();
@@ -48,6 +49,7 @@ app.use('/login', loginRoutes); // Use the loginRoutes module for routes with /l
 app.use('/register', registerRoutes); // Use the registerRoutes modules for routes with /register
 app.use('/reserve', reserveRoutes); // Use the reserveRoutes module for all routes starting with /reserve
 app.use('/account', accountRoutes); // Use the accountRoutes module for all routes starting with /account
+app.use('/search', searchRoutes); // Use the searchRoutes module for all routes starting with /search
 
 /* Connect to MongoDB and then Listen for Requests */
 /**
@@ -55,7 +57,7 @@ app.use('/account', accountRoutes); // Use the accountRoutes module for all rout
  * 12345 is the password
  * megan-ccpadev-mco is the database name
  */
-const dbURI = 'mongodb+srv://admin:12345@megan-apdev-mco.wwbdtyp.mongodb.net/?retryWrites=true&w=majority&appName=megan-apdev-mco'; 
+const dbURI = 'mongodb+srv://admin:12345@cluster0.wwbdtyp.mongodb.net/megan-ccapdev-mco'; 
 mongoose.connect(dbURI)
     .then((result) => {
         console.log("App connected to MongoDB Atlas megan-ccapdev-mco database.");

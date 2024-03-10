@@ -63,6 +63,23 @@
     transform: translate(-50%, -50%);
 }
 
+#search-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#filter-div,
+#search-results-div {
+    display: flex;
+    justify-content: center;
+}
+
+#filter-div select {
+    margin: 20px 20px 0px;
+}
+
 #search-button-div {
     display: flex;
     align-items: center;
