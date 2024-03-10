@@ -1,10 +1,7 @@
-// still have to clean up comments
-
 /* Dependencies */
 const express = require('express'); // Import Express, allows you to create a server and routes
 const exphbs = require('express-handlebars'); // Import Express-Handlebars, allows you to create views
 const mongoose = require('mongoose'); // Import Mongoose, allows you to connect to MongoDB
-const dotenv = require('dotenv'); // Import dotenv, allows you to use .env file
 const bodyParser = require('body-parser');
 
 /* Imported Routes */

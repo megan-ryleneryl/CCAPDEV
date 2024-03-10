@@ -1,15 +1,16 @@
 /* Import Models */
 const User = require('../models/User.js');
 
-const uploadUser = (req, res) => {
+async function uploadUser(req, res) {
+    console.log("made it in");
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
     const pfp = req.file;
 
     //Determine what the last userID is
-    const numUsers = db.users.estimatedDocumentCount();
-    const newUserID = 20001 + numUsers;
+    const numUsers = await User.countDocuments();
+    const newUserID = 20001 + parseInt(numUsers);
 
     //Determine which account type is selected
     var selectedRadio = req.body['account-type'];
@@ -19,29 +20,24 @@ const uploadUser = (req, res) => {
         accType = 0;
     }
 
-    newUser = new User({
-        userID: newUserID,
-        name: username,
-        accType: accType,
-        email: email,
-        password: password,
-        pfp: "/public/profile-pictures/" + pfp.originalname
-    });
+    try {
+        User.create({
+            userID: newUserID,
+            name: username,
+            accType: accType,
+            email: email,
+            password: password,
+            pfp: "/public/profile-pictures/" + pfp.originalname
+        });
 
-    newUser.save()
-    .then(savedUser => {
-        console.log('User Registered an Account Successfully!');
-        res.redirect('/index.hbs'); //is this the correct syntax?
-    })
-    .catch(error => {
+        if(User.findOne({ userID: newUserID })) {
+            console.log('Registered an Account Successfully!');
+            res.redirect('/login');
+        }
+    } catch (error) {
+        console.log(error);
         res.status(500).send('Error saving user data');
-
-        // code below used to debug
-
-        // res.status(500).send(inUsername);
-        // res.status(500).send(inPassword);
-        // res.status(500).send(inBio)
-    });
+    }
 }
 
 module.exports = {

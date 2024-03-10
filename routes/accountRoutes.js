@@ -21,7 +21,7 @@ const upload = multer({ storage: storage });
 const accountController = require('../controllers/accountController');
 
 // /* Define Routes */
-router.get('/', accountController.getProfile)
+router.get('/', accountController.getProfile);
 // router.get('/:id', accountController.getUserByID); // For displaying a specific user
 // router.get('/:id/edit', accountController.getEditPageByUserID);
 // router.post('/:id/edit', upload.single('editedAvatar'), accountController.editUser);
