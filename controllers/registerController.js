@@ -2,7 +2,6 @@
 const User = require('../models/User.js');
 
 async function uploadUser(req, res) {
-    console.log("made it in");
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
@@ -27,7 +26,7 @@ async function uploadUser(req, res) {
             accType: accType,
             email: email,
             password: password,
-            pfp: "/public/profile-pictures/" + pfp.originalname
+            pfp: "/profile-pictures/" + pfp.originalname
         });
 
         if(User.findOne({ userID: newUserID })) {

@@ -3,88 +3,87 @@ const User = require('../models/User');
 const Reservation = require('../models/Reservation');
 
 /* Define Functions */
-const getProfile = (req, res) => {
-    res.render('../views/account.hbs', {
-        layout: 'main.hbs', // Layout file to use
-        title: 'Account Actions', // Title of the page
-        css: ['account.css'], // Array of CSS files to include
-        js: ['account.js'], // Array of JavaScript files to include
-        view: 'account', // View file to use
-        accType: "Lab Technician" //TEMP
-    })
+async function saveChanges(req, res) {
+    res.redirect('/account'); //need to tweak
 }
 
-// const getUserByID = async (req, res) => {
-//     try {
-//         const id = req.params.id;
-//         const userResult = await User.findById(id).lean();
-//         // console.log(userResult);
+async function getProfile(req, res) {
+    let mergedData = [];
+    let accType = 1; // update this after session handling to be dynamic
+    let labName = 'Unknown Lab';
+    let userName = 'Anonymous';
+    let formattedDate;
+    let formattedRequestDate;
+    
+    try {
+        const reservations = await Reservation.find();
+        const users = await User.find();
 
-//         if (!userResult) {
-//             console.log('User not found');
-//             return;
-//         }
+        // Iterate over the reservations in mongodb
+        for (let i = 0; i < reservations.length; i++) {
+            // Format lab names into strings
+            switch (reservations[i].lab) {
+                case 1:
+                    labName = 'Tesla\'s Trove';
+                    break;
+                case 2:
+                    labName = 'Hopper\'s Hub';
+                    break;
+                case 3:
+                    labName = 'Ghandi\'s Haven';
+                    break;
+                default:
+                    break;
+            }
 
-//         const reviewResult = await Review.find({userID: id}).sort({ _id: -1 }).lean();
-//         // console.log(reviewResult);
+            // Format the dates to MM-DD-YYYY format
+            const date = new Date(reservations[i].date);
+            const requestDate = new Date(reservations[i].requestDate);
+            formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            formattedRequestDate = requestDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
-//         res.render('../views/userprofile.hbs', {
-//             title: userResult._id,
-//             stylesheets: ["global.css", "homepage.css", "userprofile.css"],
-//             user: userResult,
-//             review: reviewResult
-//         });
-//     } catch (err) {
-//         console.log (err);
-//     }
-// }
+            mergedData.push({labName: labName, seat: reservations[i].seat, date: formattedDate, timeslot: reservations[i].timeslot, requestDate: formattedRequestDate, requestTime: reservations[i].requestTime, userID: reservations[i].userID, userName: userName, accType: accType});
+        }
 
-// const getEditPageByUserID = (req, res) => {
-//     console.log("getEditPageByUserID called");
-//     console.log(req.params);
+        // Extract user names and push
 
-//     const userID = req.params.id;
+        for(let j = 0; j < users.length; j++) {
+            for(let k = 0; k < mergedData.length; k++) {
+                if(users[j].userID == mergedData[k].userID) {
+                    mergedData[k].userName = users[j].name;
+                }
+            }
+        }
 
-//     User.findById(userID).lean()
-//         .then((result) => {
-//             console.log(result);
-//             res.render('../views/editUserProfile.hbs', {
-//                 title: "Edit Profile",
-//                 stylesheets: ["global.css", "homepage.css", "userprofile.css"],
-//                 user: result
-//             })
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
-// }
+		mergedData.sort((a, b) => (a.date > b.date) ? 1 : - 1);
+        
+        res.render('../views/account.hbs', {
+            layout: 'main.hbs', // Layout file to use
+            title: 'Account Actions', // Title of the page
+            css: ['account.css'], // Array of CSS files to include
+            js: ['account.js'], // Array of JavaScript files to include
+            view: 'account', // View file to use
+            accType: "Lab Technician", //TEMP
+            isAdmin: accType,
+            mergedData: mergedData,
+            userData: users
+        });
+    } catch (error) {
+        console.error('Error fetching reservations', error);
+        throw error;
+    }
+}
 
-// const editUser = (req, res) => {
-//     const userID = req.params.id.toString();
-//     const newBio = req.body.editedBio.toString();
-//     let avatarPath = "";
+async function deleteAccount(req, res) {
+    //get profile email, findOne that matches, and delete
 
-//     if (req.file) {
-//         avatarPath = '/userPfp/' + req.file.originalname; // Set the image path
-//         console.log("Uploaded to" + avatarPath);
-//     } else {
-//         avatarPath = req.body.originalAvatar;
-//     }
-
-//     User.findByIdAndUpdate(userID, {
-//         bio: newBio,
-//         avatar: avatarPath
-//     })
-//         .then((result) => {
-//             res.redirect('/users/' + userID);
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
-// }
+    res.redirect('/login');
+}
 
 module.exports = {
     getProfile,
+    saveChanges,
+    deleteAccount
     // getUserByID,
     // getEditPageByUserID,
     // editUser

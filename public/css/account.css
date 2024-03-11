@@ -141,7 +141,19 @@ input[type="submit"]:hover {
     grid-row-end: 6;
 }
 
-#reservations-banner {
+#upload-pfp {
+    background-color: var(--gray);
+    border-radius: 8px;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+    width: 70%;
+    color: var(--dark-purple);
+    font-family: var(--roboto);
+}
+
+#reservations-banner,
+#profiles-banner {
     background-color: var(--dark-purple);
     text-align: center;
     height: 100px;
@@ -150,14 +162,42 @@ input[type="submit"]:hover {
     justify-content: center;
 }
 
-#reservations-banner h2 {
+#reservations-banner h2,
+#profiles-banner h2 {
     color: var(--white);
     font-size: 1.6em;
 }
 
 #reservations-table-container {
     padding: 20px;
-    margin-bottom: 200px;
+}
+
+#reservations-table-container button {
+    font-family: var(--roboto);
+    color: var(--white);
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.edit-button {
+    background-color: var(--purple);
+}
+
+.edit-button:hover {
+    background-color: var(--dark-purple);
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: rgb(164, 17, 17);
+}
+
+.cancel-button:hover {
+    background-color: rgb(107, 22, 22);
+    cursor: pointer;
 }
 
 table {
@@ -167,7 +207,7 @@ table {
 }
   
 table th, table td {
-    border: 1px solid var(--white);
+    border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
 }
@@ -178,13 +218,50 @@ table th {
 }
   
 table tbody tr:hover {
-    background-color: var(--white);
+    background-color: #f2f2f2;
+}
+
+#user-carousel {
+    padding: 20px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+#user-carousel-div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.card:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.pfp {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.name {
+    font-weight: 700;
+    margin-top: 10px;
+    font-family: var(--roboto);
 }
 
 #delete-div {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
     margin-bottom: 20px;
 }
 
