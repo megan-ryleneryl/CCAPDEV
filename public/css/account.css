@@ -68,7 +68,6 @@ input[type="submit"]:hover {
 #user-pfp-div img {
     width: 100px;
     height: 100px;
-    object-fit: cover;
     border-radius: 50%;
 }
 
@@ -130,8 +129,6 @@ input[type="submit"]:hover {
     border-radius: 8px;
     border: none;
     font-family: var(--roboto);
-    color: var(--dark-purple);
-
 }
 
 #user-actions-form input[type="submit"] {
@@ -182,6 +179,12 @@ input[type="submit"]:hover {
     padding-right: 10px;
 }
 
+#reservations-table-container input {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
 .edit-button {
     background-color: var(--purple);
 }
@@ -191,12 +194,21 @@ input[type="submit"]:hover {
     cursor: pointer;
 }
 
-.cancel-button {
+.delete-button {
     background-color: rgb(164, 17, 17);
 }
 
-.cancel-button:hover {
+.delete-button:hover {
     background-color: rgb(107, 22, 22);
+    cursor: pointer;
+}
+
+.save-button {
+    background-color: rgb(17, 164, 54);
+}
+
+.save-button:hover {
+    background-color: rgb(22, 107, 56);
     cursor: pointer;
 }
 

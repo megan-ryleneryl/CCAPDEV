@@ -17,14 +17,17 @@ const storage = multer.diskStorage({
     }
 });
 const upload = multer({ storage: storage });
+router.use(express.urlencoded({ extended: true }));
 
 /* Define Routes */
-router.get('/save', upload.single('upload-pfp'), (req, res) => {
+router.post('/update', upload.single('pfp'), (req, res) => {
     accountController.saveChanges(req, res);
-}); // this needs to be fixed
+}); 
 
 router.get('/', accountController.getProfile);
 router.get('/delete', accountController.deleteAccount);
+router.post('/edit-reservation', accountController.editReservation);
+router.post('/delete-reservation', accountController.deleteReservation);
 // router.get('/:id', accountController.getUserByID); // For displaying a specific user
 // router.get('/:id/edit', accountController.getEditPageByUserID);
 // router.post('/:id/edit', upload.single('editedAvatar'), accountController.editUser);

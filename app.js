@@ -1,7 +1,6 @@
 /* Dependencies */
 const express = require('express'); // Import Express, allows you to create a server and routes
 const exphbs = require('express-handlebars'); // Import Express-Handlebars, allows you to create views
-const handlebars = require('handlebars');
 const mongoose = require('mongoose'); // Import Mongoose, allows you to connect to MongoDB
 const bodyParser = require('body-parser');
 
@@ -21,10 +20,6 @@ app.use(express.static(__dirname + "/public")); // Set static folder
 app.use(express.urlencoded({ extended: true })); // Allows you to access req.body for POST routes
 app.use(bodyParser.urlencoded({ extended: false }));
 
-handlebars.registerHelper('eq', function(arg1, arg2, options) {
-    return arg1 === arg2 ? options.fn(this) : options.inverse(this);
-});
-
 // Use Handlebars as the view engine
 const hbs = exphbs.create({
     extname: 'hbs',
@@ -40,6 +35,7 @@ const hbs = exphbs.create({
     }
 });
 
+app.use(express.json());
 app.engine("hbs", hbs.engine); // Inform the handlebars engine that file extension to read is .hbs
 app.set("view engine", "hbs"); // Set express' default file extension for views as .hbs
 app.set("views", "./views"); // Set the directory for the views

@@ -6,14 +6,15 @@
 
     <section id="user-actions-container">
         <form id="user-actions-form">
-            <div id="user-pfp-div"> <img src="./profile-pictures/user-pfp.png" alt="user-pfp"> </div>
-            <div id="user-pfp-upload-div"> <input type="file" name="upload-pfp" id="upload-pfp" accept="image/*"> </div>
-            <div id="user-name-div"> <input type="text" name="user-name" placeholder="Pierre Ramos" disabled> </div>
-            <div id="user-email-div"> <input type="text" name="user-email" placeholder="pierre.ramos@dlsu.edu.ph" disabled> </div>
-            <div id="user-account-type-div"> <input type="text" name="user-account-type" value="Lab Technician" disabled> </div>
-            <div id="user-password-div"> <input type="password" name="user-password" value="pass1234"> </div>
+            <div id="popup-text-div"></div>
+            <div id="user-pfp-div"> <img src={{ user.pfp }} alt="user-pfp"> </div>
+            <div id="user-pfp-upload-div"> <input type="file" name="pfp" id="pfp" accept="image/*"> </div>
+            <div id="user-name-div"> <input type="text" name="name" value="{{ user.name }}"> </div>
+            <div id="user-email-div"> <input type="text" name="email" placeholder={{ user.email }} id="email" disabled> </div>
+            <div id="user-account-type-div"> <input type="text" name="accType" value="{{ accType }}" disabled> </div>
+            <div id="user-password-div"> <input type="password" name="password" value={{ user.password }}> </div>
             <div id="user-logout-div"> <button id="user-logout-button" onclick="redirectToLogin(); return false;">Logout</button> </div>
-            <div id="user-bio-div"> <textarea type="text" name="user-bio" rows="8" columns="200">As a dedicated lab technician and admin, I ensure the smooth operation and organization of our cutting-edge computer labs, providing technical support and maintaining a collaborative environment for innovation to flourish. With a passion for technology and a meticulous attention to detail, I strive to empower our users and facilitate their exploration of the digital frontier. </textarea> </div>
+            <div id="user-bio-div"> <textarea type="text" name="bio" rows="8" columns="200">{{ user.bio }} </textarea> </div>
             <input type="submit" value="Save Changes" onclick="saveChanges(); return false;">
         </form>
     </section>
@@ -42,7 +43,6 @@
             <tbody>
                 {{#each mergedData}}
                 <tr>
-                    {{!-- lab and user need to be in text --}}
                     <td>{{labName}}</td>                    
                     <td>{{seat}}</td>
                     <td>{{date}}</td>
@@ -50,9 +50,9 @@
                     <td>{{requestDate}}</td>
                     <td>{{requestTime}}</td>
                     <td>{{userName}}</td>
-                    <td><button class="edit-button" onclick="editReservation()">Edit</button></td>
+                    <td><button class="edit-button" onclick="editReservation(this)">Edit</button></td>
                     {{#if accType}}
-                        <td><button class="cancel-button" onclick="cancelReservation()">Cancel</button></td>
+                        <td><button class="delete-button" onclick="deleteReservation(this)">Delete</button></td>
                     {{/if}}
                 {{/each}}
             </tbody>

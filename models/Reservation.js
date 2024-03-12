@@ -14,12 +14,12 @@ const Schema = mongoose.Schema;
  * requestTime - The time of the request (00:00AM)
  */
 const reservationSchema = new Schema({
-    reservationID: { type: Number, required: true, unique: true },
+    reservationID: { type: String, required: true, unique: true },
     lab: { type: Number, required: true },
     date: { type: Date, required: true },
     timeslot: { type: String, required: true },
     seat: { type: Number, required: true },
-    userID: { type: Number, required: true },
+    userID: { type: String, required: true },
     requestDate: { type: Date, required: true },
     requestTime: { type: String, required: true }
 })
