@@ -15,12 +15,12 @@ const Schema = mongoose.Schema;
  */
 const reservationSchema = new Schema({
     reservationID: { type: String, required: true, unique: true },
-    lab: { type: Number, required: true },
-    date: { type: Date, required: true },
+    lab: { type: String, required: true },
+    date: { type: String, required: true },
     timeslot: { type: String, required: true },
-    seat: { type: Number, required: true },
+    seat: { type: String, required: true },
     userID: { type: String, required: true },
-    requestDate: { type: Date, required: true },
+    requestDate: { type: String, required: true },
     requestTime: { type: String, required: true }
 })
 

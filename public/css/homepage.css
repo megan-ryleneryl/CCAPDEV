@@ -106,6 +106,35 @@ button:hover {
     cursor: pointer;
 }
 
+#view-filters-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#view-filters-container label,
+#view-filters-container select {
+    margin: 20px 5px;
+    font-family: var(--roboto);
+    color: var(--dark-purple);
+    font-size: 1em;
+}
+
+#view-filters-container select {
+    background-color: #f1f1f1;
+    color: var(--dark-purple);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#view-filters-container select option {
+    color: var(--dark-purple);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
 #timeslots-div {
     display: flex;
     justify-content: center;
@@ -115,21 +144,31 @@ button:hover {
     padding: 5px; 
     border: 1px solid #ddd;
     text-align: center;
-    /* font-size: small; */
     white-space: nowrap; 
 	white-space: normal;
-    /* width: 70px; */
-    height: 28px;
+    width: 70px;
+    height: 35px;
 }
 
 #timeslots-table th {
     background-color: #f2f2f2;
+    color: var(--dark-purple);
+}
+
+.available p,
+.reserved p {
+    font-size: small;
+    font-family: var(--roboto);
+    color: var(--dark-purple);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .available {
-    background-color: rgb(218, 234, 218);
+    background-color: rgb(194, 238, 194);
 }
 
 .reserved {
-    background-color: #efe1e1;
+    background-color: #f1bdbd;
 }
