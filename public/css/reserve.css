@@ -54,3 +54,89 @@ input[type="submit"]:hover {
     background-color: var(--dark-purple);
     cursor: pointer;
 }
+
+#left-panel-filters {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#left-panel-filters label,
+#left-panel-filters select,
+#name-select {
+    margin: 20px 5px;
+    font-family: var(--roboto);
+    color: var(--dark-purple);
+    font-size: 1em;
+}
+
+#name-select {
+    margin: 5px;
+}
+
+#left-panel-filters select,
+#name-select {
+    background-color: #f1f1f1;
+    color: var(--dark-purple);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#left-panel-filters select option,
+#name-select option {
+    color: var(--dark-purple);
+    padding: 20px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+#left-panel-timeslots {
+    display: flex;
+    justify-content: center;
+}
+
+#timeslots-table th, #timeslots-table td {
+    padding: 3px; 
+    border: 1px solid #ddd;
+    text-align: center;
+    white-space: nowrap; 
+	white-space: normal;
+    width: 50px;
+    height: 28px;
+}
+
+#timeslots-table th {
+    background-color: #f2f2f2;
+    color: var(--dark-purple);
+}
+
+.available p,
+.reserved p {
+    font-size: smaller;
+    font-family: var(--roboto);
+    color: var(--dark-purple);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.available {
+    background-color: rgb(194, 238, 194);
+}
+
+.available:hover,
+.clicked {
+    cursor: pointer;
+    background-color: #f6d089; 
+}
+
+.reserved {
+    background-color: #f1bdbd;
+}
+
+#selected-seats-container {
+    padding: 10px;
+    border: 1px solid var(--gray);
+    margin-bottom: 20px;
+}

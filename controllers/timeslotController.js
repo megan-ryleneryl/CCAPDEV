@@ -180,8 +180,13 @@ async function refreshReservations (req, res) {
     }
 };
 
+async function submitReservation (req, res) {
+    console.log('made it in');
+};
+
 /* Allow functions to be used by other files */
 module.exports = {
     getAllReservations,
-    refreshReservations
+    refreshReservations,
+    submitReservation
 }

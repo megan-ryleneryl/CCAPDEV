@@ -6,7 +6,7 @@ async function refreshReservations() {
     // Get selected date and lab values
     const selectedDate = document.getElementById('date-selector').value;
     const selectedLab = document.getElementById('lab-selector').value;
-    const table = document.getElementById('timeslots-table')
+    const table = document.getElementById('timeslots-table');
 
     try {
         const response = await fetch(`/homepage/refresh?date=${selectedDate}&lab=${selectedLab}`);
