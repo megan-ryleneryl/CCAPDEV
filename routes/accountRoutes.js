@@ -28,6 +28,3 @@ router.get('/', accountController.getProfile);
 router.get('/delete', accountController.deleteAccount);
 router.post('/edit-reservation', accountController.editReservation);
 router.post('/delete-reservation', accountController.deleteReservation);
-// router.get('/:id', accountController.getUserByID); // For displaying a specific user
-// router.get('/:id/edit', accountController.getEditPageByUserID);
-// router.post('/:id/edit', upload.single('editedAvatar'), accountController.editUser);

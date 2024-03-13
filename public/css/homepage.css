@@ -105,3 +105,31 @@ button:hover {
     color: var(--white);
     cursor: pointer;
 }
+
+#timeslots-div {
+    display: flex;
+    justify-content: center;
+}
+
+#timeslots-table th, #timeslots-table td {
+    padding: 5px; 
+    border: 1px solid #ddd;
+    text-align: center;
+    /* font-size: small; */
+    white-space: nowrap; 
+	white-space: normal;
+    /* width: 70px; */
+    height: 28px;
+}
+
+#timeslots-table th {
+    background-color: #f2f2f2;
+}
+
+.available {
+    background-color: rgb(218, 234, 218);
+}
+
+.reserved {
+    background-color: #efe1e1;
+}

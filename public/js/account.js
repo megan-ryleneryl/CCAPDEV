@@ -1,6 +1,7 @@
 let origData = [];
 
 function redirectToLogin() {
+    // TODO: logout the current user
     window.location.href = "/login";
 }
 
@@ -8,6 +9,7 @@ function saveChanges() {
     const form = document.getElementById('user-actions-form');
     let formData = new FormData(form);
     
+    // Identify the user based on their email, and update their account details in the db
     const emailField = document.getElementById('email');
     const emailValue = emailField.placeholder.trim();
     formData.append('email', emailValue);
@@ -29,6 +31,7 @@ function saveChanges() {
 }
 
 function deleteAccount() {
+    // TODO: Fully implement after session handling
     window.location.href = "/account/delete";
 }
 

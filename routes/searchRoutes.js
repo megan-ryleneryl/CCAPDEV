@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = router; // Export router so it can be used in app.js
 
 /* Import Controllers */
-const searchController = require('../controllers/searchController');
+const searchController = require('../controllers/searchController.js');
 
 /* Define Routes */
-router.post('/search', searchController.getTimeslotByQuery); 
+router.get('/', searchController.openSearch); 

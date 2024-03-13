@@ -45,7 +45,7 @@ async function saveChanges(req, res) {
 
 async function getProfile(req, res) {
     let mergedData = [];
-    let accType = 1; // update this after session handling to be dynamic
+    let accType = 1; // TODO: update this after session handling to be dynamic
     let labName = 'Unknown Lab';
     let userName = 'Anonymous';
     let formattedDate;
@@ -202,7 +202,7 @@ async function deleteReservation(req, res) {
 }
 
 async function deleteAccount(req, res) {
-    //get profile email, findOne that matches, and delete
+    // TODO: get profile email, findOne that matches, and delete
     res.redirect('/login');
 }
 
