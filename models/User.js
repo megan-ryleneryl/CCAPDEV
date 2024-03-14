@@ -13,7 +13,7 @@ const Schema = mongoose.Schema;
  * bio - The bio of the user (long text)
  */
 const userSchema = new Schema({
-    userID: { type: String, required: true, unique: true },
+    userID: { type: String, required: true },
     name: { type: String, required: true },
     accType: { type: String, required: true },
     email: { type: String, required: true, unique: true },

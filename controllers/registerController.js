@@ -9,7 +9,7 @@ async function uploadUser(req, res) {
 
     //Determine what the last userID is
     const numUsers = await User.countDocuments();
-    const newUserID = 20001 + parseInt(numUsers);
+    const newUserID = 10001 + parseInt(numUsers);
 
     //Determine which account type is selected
     var selectedRadio = req.body['account-type'];
@@ -21,7 +21,7 @@ async function uploadUser(req, res) {
 
     try {
         User.create({
-            userID: newUserID,
+            userID: newUserID.toString(),
             name: username,
             accType: accType,
             email: email,

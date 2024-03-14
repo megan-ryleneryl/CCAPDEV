@@ -189,7 +189,8 @@ async function deleteReservation(req, res) {
             const reservation = await Reservation.findOne({ timeslot: receivedData[3], requestTime: receivedData[5] });
         
             if(reservation) {
-                await reservation.deleteOne();
+                // ReservationID = '20000' represents a deactivated reservation
+                await reservation.updateOne({ reservationID: '20000' });
                 res.status(200).json({ message: 'Reservation deleted successfully' });
             } else {
                 res.status(404).json({ message: 'Reservation not found' });
@@ -202,7 +203,7 @@ async function deleteReservation(req, res) {
 }
 
 async function deleteAccount(req, res) {
-    // TODO: get profile email, findOne that matches, and delete
+    // TODO: get profile email, findOne that matches, and set userID to 10000
     res.redirect('/login');
 }
 

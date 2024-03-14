@@ -32,11 +32,11 @@ async function makeReservation (req, res) {
         }
 
         if(!date && !lab) {
-            date = (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0) + '-' + today.getFullYear().toString();;
+            date = (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0) + '-' + today.getFullYear().toString();
             lab = "1";
         }
 
-        const reservations = await Reservation.find({ date: date, lab: lab });
+        const reservations = await Reservation.find({ date: date, lab: lab, reservationID: { $ne: '20000' } });
 
         // Initialize the number of seats from 1 to 10
         for(let i = 1; i <= numberOfSeats; i++) {
@@ -127,7 +127,7 @@ async function refreshTable (req, res) {
             lab = "1";
         }
 
-        const reservations = await Reservation.find({ date: date, lab: lab });
+        const reservations = await Reservation.find({ date: date, lab: lab, reservationID: { $ne: '20000' } });
         // console.log(reservations);
 
         // Initialize the number of seats from 1 to 10
@@ -197,9 +197,53 @@ async function refreshTable (req, res) {
     }
 };
 
-const submitReservation = (req, res) => { 
-    // extract user, extract array of slots
-    // for every reservation in slots array, create record in mongodb
+async function submitReservation (req, res) { 
+    const selectedCells = req.body || [];
+    const name = selectedCells[0].name;
+    let userID = '';
+
+    try {
+        // Load user and last reservationID
+        if(name !== 'Anonymous') {
+            const user = await User.findOne({ name: name });
+            userID = user.userID;
+        } else {
+            userID = '10000'; 
+        }
+        
+        const numReservations = await Reservation.countDocuments();
+        let newReservationID = 20001 + parseInt(numReservations);
+        
+        // Prepare requestDate
+        const today = new Date();
+        const requestDate = (today.getMonth() + 1).toString().padStart(2, 0) + '-' + today.getDate().toString().padStart(2, 0) + '-' + today.getFullYear().toString();
+        
+        // Prepare requestTime
+        const hours = today.getHours() % 12 || 12;
+        const minutes = today.getMinutes().toString().padStart(2, '0');
+        const ampm = today.getHours() >= 12 ? 'PM' : 'AM';
+        const requestTime = hours + ':' + minutes + ampm;
+
+        // Create new reservations in the database
+        for(let i = 0; i < selectedCells.length; i++) {
+            Reservation.create({
+                reservationID: newReservationID.toString(),
+                lab: selectedCells[i].lab,
+                date: selectedCells[i].date,
+                timeslot: selectedCells[i].timeslot,
+                seat: selectedCells[i].seat,
+                userID: userID,
+                requestDate: requestDate,
+                requestTime: requestTime
+            });
+
+            newReservationID = newReservationID + 1;
+        }
+        res.status(200).json({ message: 'Reservations created successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while creating reservations' });
+    }
 }
 
 /* Allow functions to be used by other files */

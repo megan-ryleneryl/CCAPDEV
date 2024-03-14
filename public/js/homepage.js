@@ -11,8 +11,6 @@ async function refreshReservations() {
     try {
         const response = await fetch(`/homepage/refresh?date=${selectedDate}&lab=${selectedLab}`);
         const newData = await response.json();
-        console.log(newData);
-
         table.innerHTML = '';
 
         // For the header row

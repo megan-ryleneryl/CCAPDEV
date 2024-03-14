@@ -39,6 +39,7 @@ async function refreshReservations() {
             timeCell.textContent = timeslot.time;
             row.appendChild(timeCell);
 
+            // If the seat has been clicked
             timeslot.seats.forEach((seat, index) => {
                 const seatCell = document.createElement('td');
                 const matchingCell = selectedCells.find(cellData => {
@@ -120,11 +121,17 @@ function updateSelectedSeatsDisplay() {
 }
 
 function submitReservation() {
-    console.log(selectedCells);
+    // Set the name of the reserving user
+    const name = document.getElementById('name-select').value.trim();
+    for(let i = 0; i < selectedCells.length; i++) {
+        selectedCells[i].name = name;
+    }
     
     // Send to server side
     const jsonData = JSON.stringify(selectedCells);
-    fetch('/reserve/submit-reservation', {
+    const url = `/reserve/submit-reservation?selectedCells=${encodeURIComponent(jsonData)}`;
+
+    fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -133,10 +140,22 @@ function submitReservation() {
     })
     .then(response => {
         if (response.ok) {
-            console.log('Reservation submitted successfully!');
-            //TODO: clear the slots and convert all clicked to reserved, display name
-        } else {
-            console.error('Error submitting reservation:', response.status);
+            document.getElementById('selected-seats-container').innerHTML = '';
+
+            // Loop through selectedCells and set classList to 'reserved'
+            selectedCells.forEach(cellData => {
+                const selector = `td[data-lab="${cellData.lab}"][data-date="${cellData.date}"][data-timeslot="${cellData.timeslot}"][data-seat="${cellData.seat}"]`;
+                const cell = document.querySelector(selector);
+                if (cell) {
+                    cell.classList.remove('available');
+                    cell.classList.remove('clicked');
+                    cell.classList.add('reserved');
+                }
+            });
+
+            selectedCells = [];
+
+            refreshReservations();
         }
     })
     .catch(error => {

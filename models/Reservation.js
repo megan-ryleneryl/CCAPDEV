@@ -14,7 +14,7 @@ const Schema = mongoose.Schema;
  * requestTime - The time of the request (00:00AM)
  */
 const reservationSchema = new Schema({
-    reservationID: { type: String, required: true, unique: true },
+    reservationID: { type: String, required: true },
     lab: { type: String, required: true },
     date: { type: String, required: true },
     timeslot: { type: String, required: true },

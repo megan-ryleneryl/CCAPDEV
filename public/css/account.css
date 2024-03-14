@@ -261,6 +261,7 @@ table tbody tr:hover {
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .name {

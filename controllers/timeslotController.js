@@ -18,7 +18,7 @@ async function getAllReservations (req, res) {
             lab = "1";
         }
 
-        const reservations = await Reservation.find({ date: date, lab: lab });
+        const reservations = await Reservation.find({ date: date, lab: lab, reservationID: { $ne: '20000' } });
         // console.log(reservations);
 
         // Initialize the number of seats from 1 to 10
@@ -110,7 +110,7 @@ async function refreshReservations (req, res) {
             lab = "1";
         }
 
-        const reservations = await Reservation.find({ date: date, lab: lab });
+        const reservations = await Reservation.find({ date: date, lab: lab, reservationID: { $ne: '20000' } });
         // console.log(reservations);
 
         // Initialize the number of seats from 1 to 10
@@ -180,13 +180,8 @@ async function refreshReservations (req, res) {
     }
 };
 
-async function submitReservation (req, res) {
-    console.log('made it in');
-};
-
 /* Allow functions to be used by other files */
 module.exports = {
     getAllReservations,
-    refreshReservations,
-    submitReservation
+    refreshReservations
 }
