@@ -122,13 +122,13 @@ input[type="submit"]:hover {
 }
 
 .available {
-    background-color: rgb(194, 238, 194);
+    background-color: var(--light-green);
 }
 
 .available:hover,
 .clicked {
     cursor: pointer;
-    background-color: #f6d089; 
+    background-color: var(--orange); 
 }
 
 .reserved {

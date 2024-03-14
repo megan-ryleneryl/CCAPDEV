@@ -4,18 +4,57 @@
         <img src="./assets/available-seats-bg.png" alt="available-seats-bg" width="1575px" height="210px">
     </section>
 
-    {{!-- <section id="search">
-        <div id="filter-div">
-            <select id="date-filter" name="date-filter">Select Date</select>
-            <select id="time-filter" name="time-filter">Select Timeslot</select>
-            <select id="lab-filter" name="lab-filter">Select Timeslot</select>
-            <select id="user-filter" name="user-filter">Select User</select>
-        </div>
-    </section> --}}
+    <section id="search-form-container">
+        <div id="search-form-div">
+            <form id="search-form">
+                <select id="date-filter">
+                    <option value="default">Select Date</option>
+                    {{#each dates}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
 
-    <section id="search-results">
+                <select id="lab-filter">
+                    <option value="default">Select Lab</option>
+                    <option value="1">Lab 1 - Tesla's Trove</option>
+                    <option value="2">Lab 2 - Hopper's Hub</option>
+                    <option value="3">Lab 3 - Ghandi's Haven</option>
+                </select>
+
+                <select id="timeslot-filter">
+                    <option value="default">Select Timeslot</option>
+                    {{#each timeslots}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+
+                {{!-- If user filter has value, search through reservations --}}
+                {{!-- If user filter has no value, search through available --}}
+                <select id="user-filter">
+                    <option value="default">Select User</option>
+                    {{#each users}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+
+                <input type="button" value="Clear" onclick="resetFilters(); return false;">
+                <input type="submit" value="Search" onclick="getSlots(); return false;">
+            </form>
+        </div>
+    </section>
+
+    <section id="search-results-container">
         <div id="search-results-div">
-            <p>TODO: Replace with hbs</p>
+            <div id="table-label"></div>
+            <table id="search-results-table">
+                <thead>
+                    <th>Lab</th>
+                    <th>Date</th>
+                    <th>Time Slot</th>
+                    <th>Seat No.</th>
+                    <th>User</th>
+                </thead>
+            </table>
         </div>
     </section>
 </main>

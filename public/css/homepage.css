@@ -166,9 +166,14 @@ button:hover {
 }
 
 .available {
-    background-color: rgb(194, 238, 194);
+    background-color: var(--light-green);
 }
 
 .reserved {
     background-color: #f1bdbd;
+}
+
+.reserved:hover {
+    background-color: #dc9898;
+    cursor: pointer;
 }

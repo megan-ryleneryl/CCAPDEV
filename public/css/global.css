@@ -6,6 +6,14 @@
     --magenta: #a64d79;
     --beige: #f7e8d3;
     --white: #fefefe;
+    --lighter-red: #f1bdbd;
+    --light-red: #dc9898;
+    --red: rgb(164, 17, 17);
+    --dark-red: rgb(107, 22, 22);
+    --orange: #f6d089;
+    --light-green: rgb(194, 238, 194);
+    --green: rgb(17, 164, 54);
+    --dark-green: rgb(22, 107, 56);
     --lalezar: 'Lalezar', sans-serif;
     --roboto: 'Roboto Condensed', sans-serif;
 }

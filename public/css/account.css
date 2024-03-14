@@ -195,20 +195,20 @@ input[type="submit"]:hover {
 }
 
 .delete-button {
-    background-color: rgb(164, 17, 17);
+    background-color: var(--red);
 }
 
 .delete-button:hover {
-    background-color: rgb(107, 22, 22);
+    background-color: var(--dark-red);
     cursor: pointer;
 }
 
 .save-button {
-    background-color: rgb(17, 164, 54);
+    background-color: var(--green);
 }
 
 .save-button:hover {
-    background-color: rgb(22, 107, 56);
+    background-color: var(--dark-green);
     cursor: pointer;
 }
 
@@ -284,7 +284,7 @@ table tbody tr:hover {
     margin: 10px;
     padding: 10px;
     width: 170px;
-    background-color: rgb(164, 17, 17);
+    background-color: var(--red);
     font-family: var(--lalezar);
     padding-left: 20px;
     padding-right: 20px;
@@ -295,6 +295,6 @@ table tbody tr:hover {
 }
 
 #delete-div button:hover {
-    background-color: rgb(107, 22, 22);
+    background-color: var(--dark-red);
     cursor: pointer;
 } 

@@ -1,6 +1,7 @@
 // Add event listeners to the filters
 document.getElementById('date-selector').addEventListener('change', refreshReservations);
 document.getElementById('lab-selector').addEventListener('change', refreshReservations);
+attachEventListeners();
 
 async function refreshReservations() {
     // Get selected date and lab values
@@ -52,4 +53,19 @@ async function refreshReservations() {
     } catch (error) {
         console.error(error);
     }
+}
+
+function attachEventListeners() {
+    const allCells = document.querySelectorAll('td');
+    allCells.forEach(cell => {
+        cell.addEventListener('click', function(event) {
+            const clickedCell = event.target;
+            const name = clickedCell.textContent.trim();
+
+            if(clickedCell.classList.contains('reserved')) {
+                console.log('clicked profile cell of ' + name);
+                // TODO: lead to profile
+            }
+        });
+    });
 }

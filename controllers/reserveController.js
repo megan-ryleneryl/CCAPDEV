@@ -18,14 +18,15 @@ async function makeReservation (req, res) {
         let tempUID = "10002";
         let accType = "1";
 
-        // Determine account type
+        // Determine account type; If student, only include anon and own name
+        // If admin, include all names except admins
         if(accType === "0") {
             names.push("Anonymous");
             thisUser = users.find(user => user.userID === tempUID); // TOOD: change after session handling
             names.push(thisUser.name);
         } else {
             for(let i = 0; i < users.length; i++) {
-                if(users[i].userID !== tempUID) {
+                if(users[i].accType !== '1') {
                     names.push(users[i].name);
                 }
             }
