@@ -6,6 +6,7 @@ password: 12345
 username: admin
 password: 12345
 database name: megan-ccapdev-mco
+connection string: mongodb+srv://admin:12345@cluster0.wwbdtyp.mongodb.net/megan-ccapdev-mco
 
 ===========DEPENDENCIES===========
 npm install express
