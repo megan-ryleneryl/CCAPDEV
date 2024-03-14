@@ -31,7 +31,7 @@ function saveChanges() {
 }
 
 function deleteAccount() {
-    // TODO: Fully implement after session handling
+    // TODO: Fully implement after session handling, set userID to 10000
     window.location.href = "/account/delete";
 }
 
@@ -166,11 +166,8 @@ function deleteReservation(button) {
         })
         .then(response => {
             if (response.ok) {
-                // Handle successful response from the server
-                console.log('Data sent successfully');
                 row.style.display = 'none';
             } else {
-                // Handle errors
                 console.error('Failed to send data to the server');
             }
         })
@@ -178,4 +175,9 @@ function deleteReservation(button) {
             console.error('Error:', error);
         });
     } 
+}
+
+function openProfile(event) {
+    const userID = event.currentTarget.getAttribute('data-user-id');
+    window.location.href = '/account/profile/' + userID;
 }

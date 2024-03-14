@@ -66,7 +66,7 @@
     <section id="user-carousel">
         <div id="user-carousel-div">
             {{#each userData}}
-                <div class="card">
+                <div class="card" data-user-id="{{userID}}" onclick="openProfile(event)">
                     <img class="pfp" src="{{pfp}}" alt="Profile Picture">
                     <p class="name">{{name}}</p>
                 </div>

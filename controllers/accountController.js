@@ -58,28 +58,30 @@ async function getProfile(req, res) {
 
         // Iterate over the reservations in mongodb
         for (let i = 0; i < reservations.length; i++) {
-            // Format lab names into strings
-            switch (reservations[i].lab) {
-                case 1:
-                    labName = 'Tesla\'s Trove';
-                    break;
-                case 2:
-                    labName = 'Hopper\'s Hub';
-                    break;
-                case 3:
-                    labName = 'Ghandi\'s Haven';
-                    break;
-                default:
-                    break;
+            if(reservations[i].reservationID !== '20000') {
+                // Format lab names into strings
+                switch (reservations[i].lab) {
+                    case '1':
+                        labName = 'Tesla\'s Trove';
+                        break;
+                    case '2':
+                        labName = 'Hopper\'s Hub';
+                        break;
+                    case '3':
+                        labName = 'Ghandi\'s Haven';
+                        break;
+                    default:
+                        break;
+                }
+
+                // Format the dates to MM-DD-YYYY format
+                const date = new Date(reservations[i].date);
+                const requestDate = new Date(reservations[i].requestDate);
+                formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                formattedRequestDate = requestDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+                mergedData.push({labName: labName, seat: reservations[i].seat, date: formattedDate, timeslot: reservations[i].timeslot, requestDate: formattedRequestDate, requestTime: reservations[i].requestTime, userID: reservations[i].userID, userName: userName, accType: accType});
             }
-
-            // Format the dates to MM-DD-YYYY format
-            const date = new Date(reservations[i].date);
-            const requestDate = new Date(reservations[i].requestDate);
-            formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-            formattedRequestDate = requestDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-
-            mergedData.push({labName: labName, seat: reservations[i].seat, date: formattedDate, timeslot: reservations[i].timeslot, requestDate: formattedRequestDate, requestTime: reservations[i].requestTime, userID: reservations[i].userID, userName: userName, accType: accType});
         }
 
         // Extract user names and push
@@ -108,6 +110,27 @@ async function getProfile(req, res) {
     } catch (error) {
         console.error('Error fetching reservations', error);
         throw error;
+    }
+}
+
+async function getProfilePage(req, res) {
+    try {
+        const queryID = req.params.userID;
+        const user = await User.findOne({ userID: queryID });
+        const users = await User.find();
+
+        res.render('../views/profile.hbs', {
+            layout: 'main.hbs', // Layout file to use
+            title: 'View Profile', // Title of the page
+            css: ['profile.css'], // Array of CSS files to include
+            js: ['profile.js'], // Array of JavaScript files to include
+            view: 'profile', // View file to use
+            accType: "Lab Technician", //TEMP
+            userData: users,
+            user: user
+        });
+    } catch(error) {
+        console.error(error);
     }
 }
 
@@ -210,6 +233,7 @@ async function deleteAccount(req, res) {
 module.exports = {
     saveChanges,
     getProfile,
+    getProfilePage,
     editReservation,
     deleteReservation,
     deleteAccount

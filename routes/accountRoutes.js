@@ -25,6 +25,7 @@ router.post('/update', upload.single('pfp'), (req, res) => {
 }); 
 
 router.get('/', accountController.getProfile);
+router.get('/profile/:userID', accountController.getProfilePage);
 router.get('/delete', accountController.deleteAccount);
 router.post('/edit-reservation', accountController.editReservation);
 router.post('/delete-reservation', accountController.deleteReservation);

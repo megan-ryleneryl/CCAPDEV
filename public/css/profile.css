@@ -33,28 +33,6 @@
     grid-template-rows: auto;
 }
 
-#user-actions-form button {
-    border-radius: 8px;
-    border: none;
-    margin: 10px;
-    padding: 10px;
-    width: 80%;
-    background-color: var(--purple);
-    font-family: var(--lalezar);
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    align-items: center;
-    color: var(--white);
-}
-
-#user-actions-form button:hover,
-input[type="submit"]:hover {
-    background-color: var(--dark-purple);
-    cursor: pointer;
-}
-
 #user-pfp-div {
     grid-column-start: 1;
     grid-column-end: 2;
@@ -132,25 +110,6 @@ input[type="submit"]:hover {
     font-family: var(--roboto);
 }
 
-#user-actions-form input[type="submit"] {
-    grid-column-start: 3;
-    grid-column-end: 5;
-    grid-row-start: 5;
-    grid-row-end: 6;
-}
-
-#upload-pfp {
-    background-color: var(--gray);
-    border-radius: 8px;
-    border: none;
-    margin: 10px;
-    padding: 10px;
-    width: 70%;
-    color: var(--dark-purple);
-    font-family: var(--roboto);
-}
-
-#reservations-banner,
 #profiles-banner {
     background-color: var(--dark-purple);
     text-align: center;
@@ -160,78 +119,9 @@ input[type="submit"]:hover {
     justify-content: center;
 }
 
-#reservations-banner h2,
 #profiles-banner h2 {
     color: var(--white);
     font-size: 1.6em;
-}
-
-#reservations-table-container {
-    padding: 20px;
-}
-
-#reservations-table-container button {
-    font-family: var(--roboto);
-    color: var(--white);
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-#reservations-table-container input {
-    margin: 5px;
-    padding: 5px;
-    border-radius: 3px;
-}
-
-.edit-button {
-    background-color: var(--purple);
-}
-
-.edit-button:hover {
-    background-color: var(--dark-purple);
-    cursor: pointer;
-}
-
-.delete-button {
-    background-color: var(--red);
-}
-
-.delete-button:hover {
-    background-color: var(--dark-red);
-    cursor: pointer;
-}
-
-.save-button {
-    background-color: var(--green);
-}
-
-.save-button:hover {
-    background-color: var(--dark-green);
-    cursor: pointer;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-  
-table th, table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-}
-  
-table th {
-    background-color: var(--beige);
-    color: var(--dark-purple);
-}
-  
-table tbody tr:hover {
-    background-color: #f2f2f2;
 }
 
 #user-carousel {
@@ -270,32 +160,3 @@ table tbody tr:hover {
     margin-top: 10px;
     font-family: var(--roboto);
 }
-
-#delete-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
-    margin-bottom: 20px;
-}
-
-#delete-div button {
-    border-radius: 8px;
-    border: none;
-    margin: 10px;
-    padding: 10px;
-    width: 170px;
-    background-color: var(--red);
-    font-family: var(--lalezar);
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    align-items: center;
-    color: var(--white);
-}
-
-#delete-div button:hover {
-    background-color: var(--dark-red);
-    cursor: pointer;
-} 
