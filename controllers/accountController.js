@@ -53,7 +53,7 @@ async function getProfile(req, res) {
     
     try {
         const reservations = await Reservation.find();
-        const users = await User.find();
+        const users = await User.find({ userID: { $ne: '10000' } });
         const loggedUser = await User.findOne({ name: 'Pierre Ramos' });
 
         // Iterate over the reservations in mongodb
@@ -99,7 +99,7 @@ async function getProfile(req, res) {
             layout: 'main.hbs', // Layout file to use
             title: 'Account Actions', // Title of the page
             css: ['account.css'], // Array of CSS files to include
-            js: ['account.js'], // Array of JavaScript files to include
+            js: ['account.js', 'profile.js'], // Array of JavaScript files to include
             view: 'account', // View file to use
             accType: "Lab Technician",
             user: loggedUser,
@@ -110,27 +110,6 @@ async function getProfile(req, res) {
     } catch (error) {
         console.error('Error fetching reservations', error);
         throw error;
-    }
-}
-
-async function getProfilePage(req, res) {
-    try {
-        const queryID = req.params.userID;
-        const user = await User.findOne({ userID: queryID });
-        const users = await User.find();
-
-        res.render('../views/profile.hbs', {
-            layout: 'main.hbs', // Layout file to use
-            title: 'View Profile', // Title of the page
-            css: ['profile.css'], // Array of CSS files to include
-            js: ['profile.js'], // Array of JavaScript files to include
-            view: 'profile', // View file to use
-            accType: "Lab Technician", //TEMP
-            userData: users,
-            user: user
-        });
-    } catch(error) {
-        console.error(error);
     }
 }
 
@@ -227,13 +206,13 @@ async function deleteReservation(req, res) {
 
 async function deleteAccount(req, res) {
     // TODO: get profile email, findOne that matches, and set userID to 10000
-    res.redirect('/login');
+    // Also accomodate other res statuses
+    res.sendStatus(204);
 }
 
 module.exports = {
     saveChanges,
     getProfile,
-    getProfilePage,
     editReservation,
     deleteReservation,
     deleteAccount

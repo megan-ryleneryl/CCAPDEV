@@ -44,28 +44,40 @@ async function refreshReservations() {
                     const nameParagraph = document.createElement('p');
                     nameParagraph.textContent = seat.name;
                     seatCell.appendChild(nameParagraph);
+                    // if(seat.name === 'Anonymous') {
+                    //     seatCell.classList.add('anonymous');
+                    // }
                 }
                 row.appendChild(seatCell);
             });
 
             table.appendChild(row);
         });
+        attachEventListeners();
     } catch (error) {
         console.error(error);
     }
 }
 
 function attachEventListeners() {
-    const allCells = document.querySelectorAll('td');
-    allCells.forEach(cell => {
-        cell.addEventListener('click', function(event) {
-            const clickedCell = event.target;
-            const name = clickedCell.textContent.trim();
+    const table = document.getElementById('timeslots-table');
 
-            if(clickedCell.classList.contains('reserved')) {
-                console.log('clicked profile cell of ' + name);
-                // TODO: lead to profile
+    // Add action listener to whole table
+    table.addEventListener('click', function(event) {
+        const clickedCell = event.target.closest('td');
+        if (clickedCell) {
+            const name = clickedCell.textContent.trim();
+            if (clickedCell.classList.contains('reserved')) {
+                openProfilePage(name);
             }
-        });
+        }
     });
+}
+
+async function openProfilePage(name) {
+    if (name !== 'Anonymous') {
+        const response = await fetch(`/homepage/profile?name=${name}`);
+        const userID = await response.json();
+        window.location.href = '/profile/' + userID.userID;
+    }
 }

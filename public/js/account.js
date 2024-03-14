@@ -32,7 +32,27 @@ function saveChanges() {
 
 function deleteAccount() {
     // TODO: Fully implement after session handling, set userID to 10000
-    window.location.href = "/account/delete";
+    const postData = {
+        userID: 10000 // Set current userID here
+    };
+
+    fetch('/account/delete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = '/login';
+        } else {
+            console.error('Error:', response.status);
+        }
+    })
+    .catch(error => {
+        console.error('Fetch error:', error);
+    });
 }
 
 function editReservation(button) {
@@ -175,9 +195,4 @@ function deleteReservation(button) {
             console.error('Error:', error);
         });
     } 
-}
-
-function openProfile(event) {
-    const userID = event.currentTarget.getAttribute('data-user-id');
-    window.location.href = '/account/profile/' + userID;
 }

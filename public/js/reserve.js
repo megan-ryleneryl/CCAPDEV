@@ -104,11 +104,7 @@ function attachEventListeners() {
                             cellData.timeslot === timeslot &&
                             cellData.seat === seatNumber);
                 });
-            } else if (clickedCell.classList.contains('reserved')) {
-                // TODO: lead to profile
             }
-            
-            updateSelectedSeatsDisplay();
         });
     });
 }
@@ -121,44 +117,46 @@ function updateSelectedSeatsDisplay() {
 }
 
 function submitReservation() {
-    // Set the name of the reserving user
-    const name = document.getElementById('name-select').value.trim();
-    for(let i = 0; i < selectedCells.length; i++) {
-        selectedCells[i].name = name;
-    }
-    
-    // Send to server side
-    const jsonData = JSON.stringify(selectedCells);
-    const url = `/reserve/submit-reservation?selectedCells=${encodeURIComponent(jsonData)}`;
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: jsonData
-    })
-    .then(response => {
-        if (response.ok) {
-            document.getElementById('selected-seats-container').innerHTML = '';
-
-            // Loop through selectedCells and set classList to 'reserved'
-            selectedCells.forEach(cellData => {
-                const selector = `td[data-lab="${cellData.lab}"][data-date="${cellData.date}"][data-timeslot="${cellData.timeslot}"][data-seat="${cellData.seat}"]`;
-                const cell = document.querySelector(selector);
-                if (cell) {
-                    cell.classList.remove('available');
-                    cell.classList.remove('clicked');
-                    cell.classList.add('reserved');
-                }
-            });
-
-            selectedCells = [];
-
-            refreshReservations();
+    if(selectedCells.length > 0) {
+        // Set the name of the reserving user
+        const name = document.getElementById('name-select').value.trim();
+        for(let i = 0; i < selectedCells.length; i++) {
+            selectedCells[i].name = name;
         }
-    })
-    .catch(error => {
-        console.error(error);
-    });
+
+        // Send to server side
+        const jsonData = JSON.stringify(selectedCells);
+        const url = `/reserve/submit-reservation?selectedCells=${encodeURIComponent(jsonData)}`;
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonData
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById('selected-seats-container').innerHTML = '';
+
+                // Loop through selectedCells and set classList to 'reserved'
+                selectedCells.forEach(cellData => {
+                    const selector = `td[data-lab="${cellData.lab}"][data-date="${cellData.date}"][data-timeslot="${cellData.timeslot}"][data-seat="${cellData.seat}"]`;
+                    const cell = document.querySelector(selector);
+                    if (cell) {
+                        cell.classList.remove('available');
+                        cell.classList.remove('clicked');
+                        cell.classList.add('reserved');
+                    }
+                });
+
+                selectedCells = [];
+
+                refreshReservations();
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
 }

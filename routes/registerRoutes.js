@@ -17,12 +17,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-router.post('/new', upload.single('upload-pfp'), (req, res) => {
-    registerController.uploadUser(req, res);
-});
-
 router.get('/', (req, res) => {
-    console.log('User is Registering an Account')
     res.render('../views/register.hbs', {
         layout: 'bodyOnly.hbs', // Layout file to use
         title: 'Account Registration', // Title of the page
@@ -30,4 +25,7 @@ router.get('/', (req, res) => {
         js: ['register.js'], // Array of JavaScript files to include
         view: 'register' // View file to use
     })
-})
+});
+router.post('/new', upload.single('upload-pfp'), (req, res) => {
+    registerController.uploadUser(req, res);
+});

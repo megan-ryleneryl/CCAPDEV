@@ -1,15 +1,10 @@
 <main>
-    <section id="account-banner">
-        <div id="account-banner-div"><h2>Account Settings</h2></div>
-        <img src="./assets/account-bg.jpg" alt="account-bg" width="1575px" height="210px">
-    </section>       
-
     <section id="user-actions-container">
         <div id="user-pfp-div"> <img src="{{user.pfp}}" alt="user-pfp"> </div>
-        <div id="user-name-div"> <input type="text" name="user-name" placeholder="{{user.name}}" disabled> </div>
-        <div id="user-email-div"> <input type="text" name="user-email" placeholder="{{user.email}}" disabled> </div>
-        <div id="user-account-type-div"> <input type="text" name="user-account-type" value="{{accType}}" disabled> </div>
-        <div id="user-bio-div"> <textarea type="text" name="user-bio" rows="8" columns="200" disabled>{{user.bio}}</textarea> </div>
+        <div id="user-name-div"> <h1>{{user.name}}</h1> </div>
+        <div id="user-email-div"> <h3>{{user.email}}</h3> </div>
+        <div id="user-account-type-div"> <h3>{{profileType}}</h3> </div>
+        <div id="user-bio-div"> <p>{{user.bio}}</p> </div>
     </section>
 
     <section id="profiles-banner">
@@ -19,7 +14,7 @@
     <section id="user-carousel">
         <div id="user-carousel-div">
             {{#each userData}}
-                <div class="card">
+                <div class="card" data-user-id="{{userID}}" onclick="openProfile(event)">
                     <img class="pfp" src="{{pfp}}" alt="Profile Picture">
                     <p class="name">{{name}}</p>
                 </div>

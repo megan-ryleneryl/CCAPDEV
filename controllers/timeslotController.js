@@ -180,8 +180,25 @@ async function refreshReservations (req, res) {
     }
 };
 
+async function getUser(req, res) {
+    const name = req.query.name;
+    try {
+        const user = await User.findOne({ name: name });
+        const userID = user.userID;
+        
+        if(!userID) {
+            userID = '10000'
+        }
+        
+        res.json({ userID: userID });
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 /* Allow functions to be used by other files */
 module.exports = {
     getAllReservations,
-    refreshReservations
+    refreshReservations,
+    getUser
 }

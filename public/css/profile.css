@@ -22,39 +22,31 @@
 
 #user-actions-container {
     padding: 50px;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-bottom: 50px;
-}
-
-#user-actions-form {
+    margin: 20px 15%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    border: 3px solid #ddd;
+    border-radius: 15px;
 }
 
 #user-pfp-div {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 4;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #user-pfp-div img {
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
-}
-
-#user-pfp-upload-div {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 3;
-    grid-row-end: 4;
 }
 
 #user-name-div {
@@ -65,49 +57,31 @@
 }
 
 #user-email-div {
-    grid-column-start: 4;
-    grid-column-end: 6;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
 }
 
 #user-account-type-div {
-    grid-column-start: 2;
+    grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
 }
 
-#user-password-div {
-    grid-column-start: 4;
-    grid-column-end: 6;
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-
-#user-logout-div {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 5;
-    grid-row-end: 6;
-}
-
 #user-bio-div {
     grid-column-start: 2;
-    grid-column-end: 6;
+    grid-column-end: 4;
     grid-row-start: 3;
-    grid-row-end: 5;
+    grid-row-end: 4;
 }
 
-#user-bio-div textarea {
-    width: 640px;
-    height: 100px;
-    margin-left: 10px;
-    padding: 10px;
-    background-color: var(--gray);
-    border-radius: 8px;
-    border: none;
-    font-family: var(--roboto);
+#user-name-div h1,
+#user-email-div h3,
+#user-account-type-div h3,
+#user-bio-div p {
+    margin: 0px;
 }
 
 #profiles-banner {

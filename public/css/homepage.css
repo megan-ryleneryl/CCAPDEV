@@ -177,3 +177,8 @@ button:hover {
     background-color: #dc9898;
     cursor: pointer;
 }
+
+/* .anonymous:hover {
+    background-color: #f1bdbd !important;
+    cursor: none !important;
+} */

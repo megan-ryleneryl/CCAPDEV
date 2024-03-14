@@ -40,7 +40,7 @@ function getSlots() {
             // Display search results
             if(resultsData.length > 0) {
                 resultsData.forEach(row => {
-                    let rowName = 'None';
+                    let rowName = 'Free';
                     if(selectedUser !== 'default') {
                         rowName = selectedUser;
                     }

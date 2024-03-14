@@ -11,6 +11,7 @@ const registerRoutes = require('./routes/registerRoutes.js');
 const reserveRoutes = require('./routes/reserveRoutes.js'); 
 const accountRoutes = require('./routes/accountRoutes.js');
 const searchRoutes = require('./routes/searchRoutes.js');
+const profileRoutes = require('./routes/profileRoutes.js');
 
 /* Initialize Express App */
 const app = express();
@@ -52,6 +53,7 @@ app.use('/register', registerRoutes); // Use the registerRoutes modules for rout
 app.use('/reserve', reserveRoutes); // Use the reserveRoutes module for all routes starting with /reserve
 app.use('/account', accountRoutes); // Use the accountRoutes module for all routes starting with /account
 app.use('/search', searchRoutes); // Use the searchRoutes module for all routes starting with /search
+app.use('/profile', profileRoutes); // Use the searchRoutes module for all routes starting with /profile
 
 /* Connect to MongoDB and then Listen for Requests */
 /**

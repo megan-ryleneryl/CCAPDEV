@@ -100,8 +100,7 @@ input[type="submit"]:hover {
     padding: 3px; 
     border: 1px solid #ddd;
     text-align: center;
-    white-space: nowrap; 
-	white-space: normal;
+    font-size: smaller;
     width: 50px;
     height: 28px;
 }
