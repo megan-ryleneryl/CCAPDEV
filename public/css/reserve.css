@@ -97,12 +97,14 @@ input[type="submit"]:hover {
 }
 
 #timeslots-table th, #timeslots-table td {
-    padding: 3px; 
+    padding: 0px 3px; 
     border: 1px solid #ddd;
     text-align: center;
     font-size: smaller;
     width: 50px;
-    height: 28px;
+    height: 38px;
+    line-height: 0.8em;
+    white-space: normal;
 }
 
 #timeslots-table th {
@@ -113,11 +115,7 @@ input[type="submit"]:hover {
 .available p,
 .reserved p {
     font-size: smaller;
-    font-family: var(--roboto);
     color: var(--dark-purple);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 .available {

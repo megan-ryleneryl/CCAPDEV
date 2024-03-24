@@ -9,12 +9,10 @@ async function loginUser(req, res) {
         // Find the user in the database
         const user = await User.findOne({ email: loginEmail });
 
+        // If email and password match, then return 200 successful login
         if (user && (loginPassword == user.password)) {
-            // Successful login
-            console.log('Login Attempt Successful')
             res.status(200).redirect('/homepage');
         } else {
-            // Invalid credentials
             res.status(401).json({ message: 'Invalid username or password, please try again' });
         }
     } catch (error) {

@@ -19,7 +19,6 @@ async function getAllReservations (req, res) {
         }
 
         const reservations = await Reservation.find({ date: date, lab: lab, reservationID: { $ne: '20000' } });
-        // console.log(reservations);
 
         // Initialize the number of seats from 1 to 10
         for(let i = 1; i <= numberOfSeats; i++) {
@@ -111,7 +110,6 @@ async function refreshReservations (req, res) {
         }
 
         const reservations = await Reservation.find({ date: date, lab: lab, reservationID: { $ne: '20000' } });
-        // console.log(reservations);
 
         // Initialize the number of seats from 1 to 10
         for(let i = 1; i <= numberOfSeats; i++) {
@@ -181,6 +179,7 @@ async function refreshReservations (req, res) {
 };
 
 async function getUser(req, res) {
+    // Get the userID given their name, else return 10000 (default)
     const name = req.query.name;
     try {
         const user = await User.findOne({ name: name });
