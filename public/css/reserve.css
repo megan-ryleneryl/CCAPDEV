@@ -1,0 +1,141 @@
+#reserve-seats-banner {
+    padding: 0px;
+    margin: 0px;
+    height: 190px;
+}
+
+#reserve-seats-banner img {
+    width: 100%;
+    height: 100%;
+}
+
+#reserve-seats-banner {
+    position: relative;
+}
+
+#reserve-seats-banner-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.label {
+    font-weight: 700;
+}
+
+#main-container {
+    padding: 20px;
+    display: flex;
+}
+
+#left-panel {
+    flex: 0 0 70%;
+}
+
+#right-panel {
+    flex: 0 0 30%;
+}
+
+#left-panel-filters {
+    display: flex;
+    justify-content: space-around;
+}
+
+#left-panel-timeslots {
+    text-align: center;
+}
+
+input[type="submit"] {
+    width: 85%;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--dark-purple);
+    cursor: pointer;
+}
+
+#left-panel-filters {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#left-panel-filters label,
+#left-panel-filters select,
+#name-select {
+    margin: 20px 5px;
+    font-family: var(--roboto);
+    color: var(--dark-purple);
+    font-size: 1em;
+}
+
+#name-select {
+    margin: 5px;
+}
+
+#left-panel-filters select,
+#name-select {
+    background-color: #f1f1f1;
+    color: var(--dark-purple);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#left-panel-filters select option,
+#name-select option {
+    color: var(--dark-purple);
+    padding: 20px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+#left-panel-timeslots {
+    display: flex;
+    justify-content: center;
+}
+
+#timeslots-table th, #timeslots-table td {
+    padding: 3px; 
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: smaller;
+    width: 50px;
+    height: 28px;
+}
+
+#timeslots-table th {
+    background-color: #f2f2f2;
+    color: var(--dark-purple);
+}
+
+.available p,
+.reserved p {
+    font-size: smaller;
+    font-family: var(--roboto);
+    color: var(--dark-purple);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.available {
+    background-color: var(--light-green);
+}
+
+.available:hover,
+.clicked {
+    cursor: pointer;
+    background-color: var(--orange); 
+}
+
+.reserved {
+    background-color: #f1bdbd;
+}
+
+#selected-seats-container {
+    padding: 10px;
+    border: 1px solid var(--gray);
+    margin-bottom: 20px;
+}

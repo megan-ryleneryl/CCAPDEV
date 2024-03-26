@@ -1,0 +1,74 @@
+<main>
+    <section id="reserve-seats-banner">
+        <div id="reserve-seats-banner-div"><h2>Reserve Seats</h2></div>
+        <img src="/assets/reserve-bg.jpeg" alt="reserve-bg" width="1575px" height="210px">
+    </section>
+
+    <section id="main-container">
+        <div id="left-panel">
+            <div id="left-panel-filters">
+                <div id="date-filter">
+                    <label for="date-selector">Select Date:</label>
+                    <select id="date-selector">
+                        {{#each dates}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div id="lab-filter">
+                    <label for="lab-selector">Select Lab:</label>
+                    <select id="lab-selector">
+                        <option value="1">Lab 1 - Tesla's Trove</option>
+                        <option value="2">Lab 2 - Hopper's Hub</option>
+                        <option value="3">Lab 3 - Ghandi's Haven</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="left-panel-timeslots">
+                <table id="timeslots-table">
+                    <thead>
+                        <tr>
+                            <th>Timeslot</th>
+                            {{#each seatNumber}}
+                                <th>Seat {{this}}</th>
+                            {{/each}}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each timeslots}}
+                            <tr>
+                                <td>{{this.time}}</td>
+                                {{#each this.seats}}
+                                    <td class="seat-slot {{this.class}}">
+                                        {{#if this.reserved}}
+                                            <p>{{this.name}}</p>
+                                        {{/if}}
+                                    </td>
+                                {{/each}}
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="right-panel">
+            <p class="label">Selected Slots:</p>
+            <div id="selected-seats-container"></div>
+            <form id="username-form">
+                <div id="name-input">
+                    <label for="name-select">Name:</label>
+                    <select id="name-select">
+                        {{#each names}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                
+                <input type="submit" value="Make Reservation" class="submit" onclick="submitReservation(); return false;">
+            </form>
+        </div>
+    </section>
+</main>

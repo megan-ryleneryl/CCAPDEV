@@ -1,0 +1,24 @@
+<main>
+    <section id="user-actions-container">
+        <div id="user-pfp-div"> <img src="{{user.pfp}}" alt="user-pfp"> </div>
+        <div id="user-name-div"> <h1>{{user.name}}</h1> </div>
+        <div id="user-email-div"> <h3>{{user.email}}</h3> </div>
+        <div id="user-account-type-div"> <h3>{{profileType}}</h3> </div>
+        <div id="user-bio-div"> <p>{{user.bio}}</p> </div>
+    </section>
+
+    <section id="profiles-banner">
+        <h2>View Other Profiles</h2>
+    </section>
+
+    <section id="user-carousel">
+        <div id="user-carousel-div">
+            {{#each userData}}
+                <div class="card" data-user-id="{{userID}}" onclick="openProfile(event)">
+                    <img class="pfp" src="{{pfp}}" alt="Profile Picture">
+                    <p class="name">{{name}}</p>
+                </div>
+            {{/each}}
+        </div>
+    </section> 
+</main>
