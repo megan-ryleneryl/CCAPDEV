@@ -3,12 +3,18 @@
         <div id="login-form-div">
             <img src="/assets/swiftseats-logo.png" alt="swiftseats-logo" width="160px" height="90px">
             <h2>Login</h2>
-            <form action="/login/check" method="post">
+            <form action="/login" method="post">
+                {{#if messages}}
+                    {{#each messages}}
+                        <div class="alert">{{this}}</div>
+                    {{/each}}
+                {{/if}}
+
                 <input type="email" name="email" id="email" placeholder="Email" required><br>
                 <input type="password" name="password" id="password" placeholder="Password" required><br>
                 <input type="submit" value="Login" class="submit">
-                <span id="remember-me">
-                    <input type="checkbox" name="remember-me" id="remember-me">
+                <span id="remember-me-span">
+                    <input type="checkbox" name="rememberMe" id="remember-me">
                     <label for="remember-me">Remember Me</label>
                 </span>
             </form><br>

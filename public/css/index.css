@@ -55,3 +55,11 @@ img#login-bg {
 .submit {
     width: 40%;
 }
+
+.alert {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    outline: 0.5px solid var(--light-red);
+    background-color: #ffdfdf;
+    color: var(--red);
+}

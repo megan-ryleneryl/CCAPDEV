@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 module.exports = router; // Export router so it can be used in app.js
+const User = require('../models/User.js');
 
 /* Import Controllers */
 const loginController = require('../controllers/loginController');
@@ -15,6 +16,8 @@ router.get('/', (req, res) => {
         view: 'index' // View file to use
     })
 });
+
+
 
 router.post('/check', loginController.loginUser, (req, res) =>{
     console.log('Form Received');

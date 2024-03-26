@@ -21,31 +21,45 @@
 }
 
 #search-form-container,
-#search-results-container {
+#search-results-container,
+#sort-button-container {
     display: flex;
     justify-content: center;
 }
 
-#search-form {
+#search-form,
+#sort-div {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-#search-form select {
+#search-form select,
+#sort-div button {
     margin: 20px 5px;
     font-family: var(--roboto);
     color: var(--dark-purple);
     font-size: 1em;
-}
-
-#search-form select {
     background-color: #f1f1f1;
     color: var(--dark-purple);
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
+}
+
+#search-form select:hover,
+#sort-div button:hover {
+    cursor: pointer;
+}
+
+#sort-div button:hover {
+    background-color: #e2cdb2;
+}
+
+#sort-div button {
+    color: var(--dark-purple);
+    background-color: var(--beige);
 }
 
 #search-form select option {
