@@ -1,5 +1,10 @@
 ===========DEFAULT USER============
-email: pierre.ramos@dlsu.edu.ph
+accType: Lab Technician
+email: alaska.hills@dlsu.edu.ph
+password: 12345
+
+accType: Student
+email: felicity_bloom@dlsu.edu.ph
 password: 12345
 
 ========MONGODB LOGIN CREDS========
@@ -14,6 +19,12 @@ npm install express-handlebars
 npm install mongoose
 npm install body-parser
 npm install multer
+npm install express-session
+npm install express-flash
+npm install method-override
+npm install passport
+npm install passport-local
+npm install bcrypt
 
 ===========RUN COMMAND============
 node app.js
