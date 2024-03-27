@@ -15,7 +15,6 @@ initializePassport(passport);
 
 /* Imported Routes */
 const timeslotRoutes = require('./routes/timeslotRoutes.js');
-// const loginRoutes = require('./routes/loginRoutes.js');
 const registerRoutes = require('./routes/registerRoutes.js');
 const reserveRoutes = require('./routes/reserveRoutes.js'); 
 const accountRoutes = require('./routes/accountRoutes.js');
@@ -78,13 +77,13 @@ app.get('/about', (req, res) => {
     res.render('../views/about.hbs', {
         layout: 'main.hbs', // Layout file to use
         title: 'About', // Title of the page
-        accType: "Lab Technician", //TEMP
+        css: ['about.css'], // Array of CSS files to include
+        user: req.user, // User
     })
 });
 
 // App Routes
 app.use('/homepage', timeslotRoutes); // Use the timeslotRoutes module for all routes starting with /homepage
-// app.use('/login', loginRoutes); // Use the loginRoutes module for routes with /login
 app.use('/register', registerRoutes); // Use the registerRoutes modules for routes with /register
 app.use('/reserve', reserveRoutes); // Use the reserveRoutes module for all routes starting with /reserve
 app.use('/account', accountRoutes); // Use the accountRoutes module for all routes starting with /account

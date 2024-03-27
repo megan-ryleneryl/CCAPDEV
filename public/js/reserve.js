@@ -95,6 +95,7 @@ function attachEventListeners() {
                     name: ''
                 };
                 selectedCells.push(cellData);
+                updateSelectedSeatsDisplay();
             } else if (clickedCell.classList.contains('clicked')) {
                 clickedCell.classList.remove('clicked');
                 clickedCell.classList.add('available');

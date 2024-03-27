@@ -4,64 +4,16 @@ const Reservation = require('../models/Reservation');
 const bcrypt = require('bcrypt');
 
 /* Define Functions */
-async function saveChanges(req, res) {    
-    try {
-        // Extract updated user data from the request body
-        const formData = req.body;
-        const pfp = req.file;
-        const user = await User.findOne({ email: formData.email });
-
-        // Update user data with the updated fields
-        if (user) {
-            if(formData.name) {
-                user.name = formData.name;
-            }
-
-            if(formData.password) {
-                bcrypt.hash(formData.password, 10, function(err, hashedPassword) {
-                    if (err) {
-                        console.error(err);
-                    } else {
-                        // If successful, store the hashed password
-                        user.password = hashedPassword;
-                    }
-                });
-            }
-
-            if(formData.bio) {
-                user.bio = formData.bio;
-            }
-
-            if(pfp) {
-                user.pfp = "/profile-pictures/" + pfp.originalname;
-            }
-            
-            await user.save();
-
-            // Send a success response
-            res.status(200).json({ message: 'User updated successfully' });
-            res.redirect('/account');
-        } else {
-            // If user not found, send an error response
-            res.status(404).json({ message: 'User not found' });
-        }
-    } catch (error) {
-        // Return error response
-        console.error('Error updating user:', error);
-        res.status(500).json({ message: 'Internal server error' });
-    }
-}
-
 async function getProfile(req, res) {
     const loggedUser = req.user || '';
     let mergedData = [];
     let reservations = [];
     let labName = 'Unknown Lab';
-    let userName = 'Anonymous';
     let formattedDate;
     let formattedRequestDate;
     let isAdmin = 0;
-    isAdmin = loggedUser.accType === 'Lab Technician'? 1 : 0;
+    let userName = loggedUser.accType === 'Student' ? loggedUser.name : 'Anonymous';
+    isAdmin = loggedUser.accType === 'Lab Technician' ? 1 : 0;
     
     try {
         // If lab technician, show all reservations
@@ -72,7 +24,11 @@ async function getProfile(req, res) {
             reservations = await Reservation.find({ userID: loggedUser.userID });
         } 
         
-        const users = await User.find({ userID: { $ne: '10000' } });
+        const users = await User.find({ 
+            userID: { 
+                $nin: [loggedUser.userID, '10000'] // Exclude both the logged-in user and users with ID 10000
+            } 
+        });
 
         // Iterate over the reservations in mongodb
         for (let i = 0; i < reservations.length; i++) {
@@ -112,12 +68,15 @@ async function getProfile(req, res) {
         }
 
 		mergedData.sort((a, b) => (a.date > b.date) ? 1 : - 1);
-        
+        mergedData = mergedData.map(user => {
+            return { ...user, isAdmin: isAdmin };
+        });
+
         res.render('../views/account.hbs', {
             layout: 'main.hbs', // Layout file to use
             title: 'Account Actions', // Title of the page
             css: ['account.css'], // Array of CSS files to include
-            js: ['account.js', 'profile.js'], // Array of JavaScript files to include
+            js: ['account.js'], // Array of JavaScript files to include
             view: 'account', // View file to use
             user: loggedUser,
             isAdmin: isAdmin,
@@ -127,6 +86,57 @@ async function getProfile(req, res) {
     } catch (error) {
         console.error('Error fetching reservations', error);
         throw error;
+    }
+}
+
+async function saveChanges(req, res) {    
+    try {
+        // Extract updated user data from the request body
+        const formData = req.body;
+        const pfp = req.file;
+        const user = await User.findOne({ email: formData.email });
+
+        // Update user data with the updated fields
+        if (user) {
+            if(formData.name) {
+                user.name = formData.name;
+            }
+
+            if(formData.password) {
+                console.log(formData.password);
+                console.log(await bcrypt.compare(formData.password, user.password));
+                if(!(await bcrypt.compare(formData.password, user.password))) {
+                    bcrypt.hash(formData.password, 10, async function(err, hashedPassword) {
+                        if (err) {
+                            console.error(err);
+                        } else {
+                            // If successful, store the hashed password
+                            await user.updateOne({ password: hashedPassword });
+                        }
+                    });
+                }
+            }
+
+            if(formData.bio) {
+                user.bio = formData.bio.trim();
+            }
+
+            if(pfp) {
+                user.pfp = "/profile-pictures/" + pfp.originalname;
+            }
+            
+            await user.save();
+
+            // Send a success response
+            res.status(200).json({ message: 'User updated successfully' });
+        } else {
+            // If user not found, send an error response
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        // Return error response
+        console.error('Error updating user:', error);
+        res.status(500).json({ message: 'Internal server error' });
     }
 }
 
@@ -222,14 +232,14 @@ async function deleteReservation(req, res) {
 }
 
 async function deleteAccount(req, res) {
-    const loggedUser = req.user;
+    const loggedUserID = req.body.userID;
+    const loggedUser = await User.findOne({ userID: loggedUserID });
     
     try {
         if(loggedUser) {
             // UserID = '10000' represents a deactivated reservation
             await loggedUser.updateOne({ userID: '10000' });
             res.status(200).json({ message: 'User deleted successfully' });
-            res.redirect('/login');
         } else {
             res.status(404).json({ message: 'User not found' });
         }

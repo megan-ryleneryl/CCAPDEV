@@ -1,8 +1,14 @@
 let origData = [];
 
-function redirectToLogin() {
-    // TODO: logout the current user
-    window.location.href = "/login";
+function logoutUser() {
+    // Create a new form element
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/logout?_method=DELETE'; // Action URL for logout
+    
+    // Append the form to the document body and submit
+    document.body.appendChild(form);
+    form.submit();
 }
 
 function saveChanges() {
@@ -21,37 +27,25 @@ function saveChanges() {
     .then(response => {
         if (response.ok) {
             alert('Changes were saved successfully!');
+            const pfpUploadInput = document.getElementById('pfp');
+
+            if(pfpUploadInput.value != '') {
+                // Update the pfp
+                const pfp = document.getElementById('pfp');
+                const uploadedFiles = pfp.files; // Get the FileList object containing uploaded files
+                const fileName = uploadedFiles[0].name; // Get the name of the first uploaded file
+                const userPfpImg = document.getElementById('user-pfp-div').querySelector('img');
+                userPfpImg.src = '/profile-pictures/' + fileName;
+
+                // Clear the upload field
+                pfpUploadInput.value = '';
+            }
         } else {
             console.error('Error:', response.statusText);
         }
     })
     .catch(error => {
         console.error('Error:', error);
-    });
-}
-
-function deleteAccount() {
-    // TODO: Fully implement after session handling, set userID to 10000
-    const postData = {
-        userID: 10000 // Set current userID here
-    };
-
-    fetch('/account/delete', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(postData)
-    })
-    .then(response => {
-        if (response.ok) {
-            window.location.href = '/login';
-        } else {
-            console.error('Error:', response.status);
-        }
-    })
-    .catch(error => {
-        console.error('Fetch error:', error);
     });
 }
 
@@ -141,7 +135,7 @@ function saveEditedData(button) {
 
                 if(updatedCells[8]) {
                     const deleteButton = updatedCells[8].querySelector('.delete-button');
-                    deleteButton.style.display = 'block';
+                    deleteButton.style.display = 'inline-block';
                 }
             } else {
                 // Handle errors
@@ -195,4 +189,33 @@ function deleteReservation(button) {
             console.error('Error:', error);
         });
     } 
+}
+
+async function openProfile(name) {
+    const response = await fetch(`/homepage/profile?name=${name}`);
+    const userID = await response.json();
+    window.location.href = '/profile/' + userID.userID;
+}
+
+function deleteAccount(userID) {
+    const jsonData = JSON.stringify({ userID: userID });
+
+    fetch('/account/delete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: jsonData
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Account deleted successfully! Redirecting to login.');
+            logoutUser();
+        } else {
+            console.error('Error:', response.status);
+        }
+    })
+    .catch(error => {
+        console.error('Fetch error:', error);
+    });
 }

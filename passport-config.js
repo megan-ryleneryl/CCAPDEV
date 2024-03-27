@@ -13,7 +13,12 @@ function initialize(passport) {
                 return done(null, false, { message: 'No user with that email.' });
             }
 
-            // If the user exists, compare the password
+            // If user has been deactivated (deleted)
+            if (user.userID == '10000') {
+                return done(null, false, { message: 'That account was deleted.' });
+            }
+
+            // If the user exists and is active, compare the password
             if (await bcrypt.compare(password, user.password)) {
                 return done(null, user);
             } else {
