@@ -1,6 +1,7 @@
 /* Import Models */
 const User = require('../models/User');
 const Reservation = require('../models/Reservation');
+const bcrypt = require('bcrypt');
 
 /* Define Functions */
 async function saveChanges(req, res) {    
@@ -17,7 +18,14 @@ async function saveChanges(req, res) {
             }
 
             if(formData.password) {
-                user.password = formData.password;
+                bcrypt.hash(formData.password, 10, function(err, hashedPassword) {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        // If successful, store the hashed password
+                        user.password = hashedPassword;
+                    }
+                });
             }
 
             if(formData.bio) {
@@ -32,29 +40,39 @@ async function saveChanges(req, res) {
 
             // Send a success response
             res.status(200).json({ message: 'User updated successfully' });
+            res.redirect('/account');
         } else {
             // If user not found, send an error response
             res.status(404).json({ message: 'User not found' });
         }
     } catch (error) {
-        // Handle any errors that occur during the update process
+        // Return error response
         console.error('Error updating user:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
 }
 
 async function getProfile(req, res) {
+    const loggedUser = req.user || '';
     let mergedData = [];
-    let accType = 1; // TODO: update this after session handling to be dynamic
+    let reservations = [];
     let labName = 'Unknown Lab';
     let userName = 'Anonymous';
     let formattedDate;
     let formattedRequestDate;
+    let isAdmin = 0;
+    isAdmin = loggedUser.accType === 'Lab Technician'? 1 : 0;
     
     try {
-        const reservations = await Reservation.find();
+        // If lab technician, show all reservations
+        if(isAdmin) {
+            reservations = await Reservation.find();
+        } else {
+            // Otherwise, show only reservations made by the logged in user
+            reservations = await Reservation.find({ userID: loggedUser.userID });
+        } 
+        
         const users = await User.find({ userID: { $ne: '10000' } });
-        const loggedUser = await User.findOne({ name: 'Pierre Ramos' });
 
         // Iterate over the reservations in mongodb
         for (let i = 0; i < reservations.length; i++) {
@@ -80,7 +98,7 @@ async function getProfile(req, res) {
                 formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
                 formattedRequestDate = requestDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
-                mergedData.push({labName: labName, seat: reservations[i].seat, date: formattedDate, timeslot: reservations[i].timeslot, requestDate: formattedRequestDate, requestTime: reservations[i].requestTime, userID: reservations[i].userID, userName: userName, accType: accType});
+                mergedData.push({labName: labName, seat: reservations[i].seat, date: formattedDate, timeslot: reservations[i].timeslot, requestDate: formattedRequestDate, requestTime: reservations[i].requestTime, userID: reservations[i].userID, userName: userName, accType: loggedUser.accType });
             }
         }
 
@@ -101,9 +119,8 @@ async function getProfile(req, res) {
             css: ['account.css'], // Array of CSS files to include
             js: ['account.js', 'profile.js'], // Array of JavaScript files to include
             view: 'account', // View file to use
-            accType: "Lab Technician",
             user: loggedUser,
-            isAdmin: accType,
+            isAdmin: isAdmin,
             mergedData: mergedData,
             userData: users
         });
@@ -205,9 +222,21 @@ async function deleteReservation(req, res) {
 }
 
 async function deleteAccount(req, res) {
-    // TODO: get profile email, findOne that matches, and set userID to 10000
-    // Also accomodate other res statuses
-    res.sendStatus(204);
+    const loggedUser = req.user;
+    
+    try {
+        if(loggedUser) {
+            // UserID = '10000' represents a deactivated reservation
+            await loggedUser.updateOne({ userID: '10000' });
+            res.status(200).json({ message: 'User deleted successfully' });
+            res.redirect('/login');
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 }
 
 module.exports = {

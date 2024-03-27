@@ -15,18 +15,18 @@ async function makeReservation (req, res) {
         let lab = req.query.lab;
 
         const users = await User.find();
-        let tempUID = "10002";
-        let accType = "1";
-
-        // Determine account type; If student, only include anon and own name
-        // If admin, include all names except admins
-        if(accType === "0") {
+        const loggedUser = req.user;
+        
+        // Determine account type
+        // If student, only include anon and own name
+        if(loggedUser.accType === "Student") {
             names.push("Anonymous");
-            thisUser = users.find(user => user.userID === tempUID); // TOOD: change after session handling
+            thisUser = users.find(user => user.userID === loggedUser.userID); // TOOD: change after session handling
             names.push(thisUser.name);
         } else {
+            // If admin, include all names except admins
             for(let i = 0; i < users.length; i++) {
-                if(users[i].accType !== '1') {
+                if(users[i].accType !== 'Lab Technician') {
                     names.push(users[i].name);
                 }
             }
@@ -100,8 +100,8 @@ async function makeReservation (req, res) {
             css: ['reserve.css'], // Array of CSS files to include
             js: ['reserve.js'], // Array of JavaScript files to include
             view: 'reserve', // View file to use
-            accType: "Lab Technician", //TEMP
             names: names, // Names of the users
+            user: req.user, // User info
 
             seatNumber: seatNumber, // Number of seats from 1 to 10
             timeslots: timeslots, // Timeslots from 9:00AM to 5:30PM
@@ -129,7 +129,6 @@ async function refreshTable (req, res) {
         }
 
         const reservations = await Reservation.find({ date: date, lab: lab, reservationID: { $ne: '20000' } });
-        // console.log(reservations);
 
         // Initialize the number of seats from 1 to 10
         for(let i = 1; i <= numberOfSeats; i++) {
@@ -148,7 +147,6 @@ async function refreshTable (req, res) {
                     let name = '';
 
                     for (let i = 0; i < reservations.length; i++) {
-                        // console.log(reservations[i].timeslot + ' === ' + time + ' yields ' + (reservations[i].timeslot === time) + ' and ' + reservations[i].seat + ' === ' + j + ' yields ' + (reservations[i].seat === j.toString()));
                         if(reservations[i].timeslot === time && reservations[i].seat === j.toString()) {
                             isReserved = true;
                             userID = reservations[i].userID;

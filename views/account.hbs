@@ -11,8 +11,8 @@
             <div id="user-pfp-upload-div"> <input type="file" name="pfp" id="pfp" accept="image/*"> </div>
             <div id="user-name-div"> <input type="text" name="name" value="{{ user.name }}"> </div>
             <div id="user-email-div"> <input type="text" name="email" placeholder={{ user.email }} id="email" disabled> </div>
-            <div id="user-account-type-div"> <input type="text" name="accType" value="{{ accType }}" disabled> </div>
-            <div id="user-password-div"> <input type="password" name="password" value={{ user.password }}> </div>
+            <div id="user-account-type-div"> <input type="text" name="accType" value="{{ user.accType }}" disabled> </div>
+            <div id="user-password-div"> <input type="password" name="password" placeholder="Input New Password..."> </div>
             <div id="user-logout-div"> <button id="user-logout-button" onclick="redirectToLogin(); return false;">Logout</button> </div>
             <div id="user-bio-div"> <textarea type="text" name="bio" rows="8" columns="200">{{ user.bio }} </textarea> </div>
             <input type="submit" value="Save Changes" onclick="saveChanges(); return false;">
@@ -74,7 +74,7 @@
         </div>
     </section> 
 
-    <div id="delete-div"> 
-        <button id="delete-button" onclick="deleteAccount()">Delete Account</button> 
-    </div>
+    <form id="delete-div" action="/logout?_method=DELETE" method="POST"> 
+        <button id="delete-button" type="submit">Delete Account</button> 
+    </form>
 </main>

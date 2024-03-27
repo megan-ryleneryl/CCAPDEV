@@ -1,10 +1,10 @@
 <main>
     <section id="user-actions-container">
-        <div id="user-pfp-div"> <img src="{{user.pfp}}" alt="user-pfp"> </div>
-        <div id="user-name-div"> <h1>{{user.name}}</h1> </div>
-        <div id="user-email-div"> <h3>{{user.email}}</h3> </div>
-        <div id="user-account-type-div"> <h3>{{profileType}}</h3> </div>
-        <div id="user-bio-div"> <p>{{user.bio}}</p> </div>
+        <div id="user-pfp-div"> <img src="{{profileUser.pfp}}" alt="user-pfp"> </div>
+        <div id="user-name-div"> <h1>{{profileUser.name}}</h1> </div>
+        <div id="user-email-div"> <h3>{{profileUser.email}}</h3> </div>
+        <div id="user-account-type-div"> <h3>{{profileUser.accType}}</h3> </div>
+        <div id="user-bio-div"> <p>{{profileUser.bio}}</p> </div>
     </section>
 
     <section id="profiles-banner">
@@ -22,3 +22,10 @@
         </div>
     </section> 
 </main>
+
+<script>
+    function openProfile(event) {
+        const userID = event.currentTarget.getAttribute('data-user-id');
+        window.location.href = '/profile/' + userID;
+    }
+</script>

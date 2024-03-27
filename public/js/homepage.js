@@ -44,9 +44,6 @@ async function refreshReservations() {
                     const nameParagraph = document.createElement('p');
                     nameParagraph.textContent = seat.name;
                     seatCell.appendChild(nameParagraph);
-                    // if(seat.name === 'Anonymous') {
-                    //     seatCell.classList.add('anonymous');
-                    // }
                 }
                 row.appendChild(seatCell);
             });

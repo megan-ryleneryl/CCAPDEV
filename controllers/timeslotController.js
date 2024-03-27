@@ -37,7 +37,6 @@ async function getAllReservations (req, res) {
                     let name = '';
 
                     for (let i = 0; i < reservations.length; i++) {
-                        // console.log(reservations[i].timeslot + ' === ' + time + ' yields ' + (reservations[i].timeslot === time) + ' and ' + reservations[i].seat + ' === ' + j + ' yields ' + (reservations[i].seat === j.toString()));
                         if(reservations[i].timeslot === time && reservations[i].seat === j.toString()) {
                             isReserved = true;
                             userID = reservations[i].userID;
@@ -82,7 +81,7 @@ async function getAllReservations (req, res) {
             css: ['homepage.css'], // Array of CSS files to include
             js: ['homepage.js'], // Array of JavaScript files to include
             view: 'homepage', // View file to use
-            accType: "Lab Technician", //TEMP
+            user: req.user, // User info
 
             seatNumber: seatNumber, // Number of seats from 1 to 10
             timeslots: timeslots, // Timeslots from 9:00AM to 5:30PM
@@ -128,7 +127,6 @@ async function refreshReservations (req, res) {
                     let name = '';
 
                     for (let i = 0; i < reservations.length; i++) {
-                        // console.log(reservations[i].timeslot + ' === ' + time + ' yields ' + (reservations[i].timeslot === time) + ' and ' + reservations[i].seat + ' === ' + j + ' yields ' + (reservations[i].seat === j.toString()));
                         if(reservations[i].timeslot === time && reservations[i].seat === j.toString()) {
                             isReserved = true;
                             userID = reservations[i].userID;

@@ -64,7 +64,13 @@ app.use(methodOverride('_method')); // To allow the POST logout form to become a
 
 // Make login the landing page
 app.get('/', (req, res) => {
-    res.redirect('/login');
+    // If user is authenticated, redirect to homepage
+    if (req.isAuthenticated()) {
+        res.redirect('/homepage');
+    } else {
+        // If user is not authenticated, redirect to login page
+        res.redirect('/login');
+    }
 });
 
 // For about page

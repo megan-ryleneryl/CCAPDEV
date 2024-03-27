@@ -8,10 +8,9 @@ async function uploadUser(req, res) {
     const password = req.body.password;
     const hashedPassword =  await bcrypt.hash(password, 10);
     const pfp = req.file;
-
     const exists = await User.find({ email: email});
 
-    if(!exists) {
+    if(exists.length === 0) {
         //Determine what the last userID is
         const numUsers = await User.countDocuments();
         const newUserID = 10001 + parseInt(numUsers);
@@ -42,10 +41,10 @@ async function uploadUser(req, res) {
             console.log(error);
             res.status(500).send('Error saving user data');
         }
-    } //else {
-    //     alert('Account email already exists, please try again');
-    //     document.getElementById('reg-form').reset();
-    // }    
+    } else {
+        console.log('Registration failed. Please try again.');
+        res.redirect('/register');
+    }    
 }
 
 module.exports = {

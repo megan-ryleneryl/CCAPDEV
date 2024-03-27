@@ -21,7 +21,7 @@ async function openSearch (req, res) {
 
         // Get the names of all users except admin
         users.forEach(user => {
-            if(user.accType !== '1') {
+            if(user.accType !== 'Lab Technician') {
                 names.push(user.name);
             }
         });
@@ -40,7 +40,7 @@ async function openSearch (req, res) {
             css: ['search.css'], // Array of CSS files to include
             js: ['search.js'], // Array of JavaScript files to include
             view: 'search', // View file to use
-            accType: "Lab Technician", //TEMP
+            user: req.user, // User info
     
             dates: dates, // Array of dates to display
             timeslots: timeslots, // Array of timeslots from 9:00AM to 5:30PM
