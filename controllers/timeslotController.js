@@ -33,7 +33,7 @@ async function getAllReservations (req, res) {
 
                 for (let j = 1; j <= numberOfSeats; j++) {
                     let isReserved = false;
-                    let userID = 999;
+                    let userID = 99999;
                     let name = '';
 
                     for (let i = 0; i < reservations.length; i++) {
@@ -44,7 +44,7 @@ async function getAllReservations (req, res) {
                         }
                     }
 
-                    if(userID !== 999) {
+                    if(userID !== 99999) {
                         try {
                             const reservation = await User.findOne({ userID: userID });
                             if (reservation) {
@@ -59,7 +59,7 @@ async function getAllReservations (req, res) {
                     
                     const className = isReserved ? 'reserved' : 'available';
                     seats.push({ reserved: isReserved, class: className, name: name });
-                    userID = 999;
+                    userID = 99999;
                     name = '';
                 }
                 timeslots.push({ time: time, seats: seats });
@@ -123,7 +123,7 @@ async function refreshReservations (req, res) {
 
                 for (let j = 1; j <= numberOfSeats; j++) {
                     let isReserved = false;
-                    let userID = 999;
+                    let userID = 99999;
                     let name = '';
 
                     for (let i = 0; i < reservations.length; i++) {
@@ -134,7 +134,7 @@ async function refreshReservations (req, res) {
                         }
                     }
 
-                    if(userID !== 999) {
+                    if(userID !== 99999) {
                         try {
                             const reservation = await User.findOne({ userID: userID });
                             if (reservation) {
@@ -149,7 +149,7 @@ async function refreshReservations (req, res) {
                     
                     const className = isReserved ? 'reserved' : 'available';
                     seats.push({ reserved: isReserved, class: className, name: name });
-                    userID = 999;
+                    userID = 99999;
                     name = '';
                 }
                 timeslots.push({ time: time, seats: seats });

@@ -52,7 +52,7 @@ async function makeReservation (req, res) {
 
                 for (let j = 1; j <= numberOfSeats; j++) {
                     let isReserved = false;
-                    let userID = 999;
+                    let userID = 99999;
                     let name = '';
 
                     for (let i = 0; i < reservations.length; i++) {
@@ -63,7 +63,7 @@ async function makeReservation (req, res) {
                         }
                     }
 
-                    if(userID !== 999) {
+                    if(userID !== 99999) {
                         try {
                             const reservation = await User.findOne({ userID: userID });
                             if (reservation) {
@@ -78,7 +78,7 @@ async function makeReservation (req, res) {
                     
                     const className = isReserved ? 'reserved' : 'available';
                     seats.push({ reserved: isReserved, class: className, name: name });
-                    userID = 999;
+                    userID = 99999;
                     name = '';
                 }
                 timeslots.push({ time: time, seats: seats });
@@ -143,7 +143,7 @@ async function refreshTable (req, res) {
 
                 for (let j = 1; j <= numberOfSeats; j++) {
                     let isReserved = false;
-                    let userID = 999;
+                    let userID = 99999;
                     let name = '';
 
                     for (let i = 0; i < reservations.length; i++) {
@@ -154,7 +154,7 @@ async function refreshTable (req, res) {
                         }
                     }
 
-                    if(userID !== 999) {
+                    if(userID !== 99999) {
                         try {
                             const reservation = await User.findOne({ userID: userID });
                             if (reservation) {
@@ -169,7 +169,7 @@ async function refreshTable (req, res) {
                     
                     const className = isReserved ? 'reserved' : 'available';
                     seats.push({ reserved: isReserved, class: className, name: name });
-                    userID = 999;
+                    userID = 99999;
                     name = '';
                 }
                 timeslots.push({ time: time, seats: seats });
@@ -207,7 +207,7 @@ async function submitReservation (req, res) {
             const user = await User.findOne({ name: name });
             userID = user.userID;
         } else {
-            userID = '10000'; 
+            userID = '99999'; 
         }
         
         const numReservations = await Reservation.countDocuments();
