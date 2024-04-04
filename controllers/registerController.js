@@ -18,9 +18,9 @@ async function uploadUser(req, res) {
         //Determine which account type is selected
         var selectedRadio = req.body['account-type'];
         if (selectedRadio == "Lab Technician") {
-            accType = 1;
+            accType = "Lab Technician";
         } else {
-            accType = 0;
+            accType = "Student";
         }
 
         try {
