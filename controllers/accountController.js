@@ -51,8 +51,8 @@ async function getProfile(req, res) {
                 // Format the dates to MM-DD-YYYY format
                 const date = new Date(reservations[i].date);
                 const requestDate = new Date(reservations[i].requestDate);
-                formattedDate = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-                formattedRequestDate = requestDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                formattedDate = date.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }).replace(/\//g, '-');
+                formattedRequestDate = requestDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }).replace(/\//g, '-');
 
                 mergedData.push({labName: labName, seat: reservations[i].seat, date: formattedDate, timeslot: reservations[i].timeslot, requestDate: formattedRequestDate, requestTime: reservations[i].requestTime, userID: reservations[i].userID, userName: userName, accType: loggedUser.accType });
             }
@@ -155,26 +155,31 @@ async function editReservation(req, res) {
         }
     }
 
+    for(let i = 0; i < updatedData.length; i++) {
+        updatedData[i] = updatedData[i].toString();
+    }
+
     // Perform the actual update of db records
     try {
         // Find the matching original reservation to make edits to
         const reservation = await Reservation.findOne({ timeslot: origData[3], requestTime: origData[5] });
         const users = await User.find();
+        const reservationID = reservation.reservationID;
 
-        if(reservation && users) {
+        if(reservationID && users) {
             let labNumber = 0;
             let userID = "20000";
 
             // Reconvert formats for Lab and UserID
             switch (updatedData[0]) {
                 case "Tesla's Trove":
-                    labNumber = 1;
+                    labNumber = '1';
                     break;
                 case "Hopper's Hub":
-                    labNumber = 2;
+                    labNumber = '2';
                     break;
                 case "Ghandi's Haven":
-                    labNumber = 3;
+                    labNumber = '3';
                     break;
                 default:
                     break;
@@ -194,7 +199,7 @@ async function editReservation(req, res) {
             reservation.requestDate = reservation.requestDate !== updatedData[4] ? updatedData[4] : reservation.requestDate;
             reservation.requestTime = reservation.requestTime !== updatedData[5] ? updatedData[5] : reservation.requestTime;
             reservation.userID = reservation.userID !== userID ? userID : reservation.userID;
-            
+
             await reservation.save();
 
             // Send a success response
