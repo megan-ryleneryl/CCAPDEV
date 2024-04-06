@@ -18,7 +18,10 @@ async function getProfile(req, res) {
     try {
         // If lab technician, show all reservations
         if(isAdmin) {
-            reservations = await Reservation.find();
+            reservations = await Reservation.find({
+                reservationID: { $ne: '20000' },
+                userID: { $ne: '10000' }
+            });
         } else {
             // Otherwise, show only reservations made by the logged in user
             reservations = await Reservation.find({ userID: loggedUser.userID });
@@ -239,11 +242,18 @@ async function deleteReservation(req, res) {
 async function deleteAccount(req, res) {
     const loggedUserID = req.body.userID;
     const loggedUser = await User.findOne({ userID: loggedUserID });
+    const userReservations = await Reservation.find({ userID: loggedUserID });
     
     try {
         if(loggedUser) {
             // UserID = '10000' represents a deactivated reservation
             await loggedUser.updateOne({ userID: '10000' });
+
+            // Reflect in all user reservations
+            for(i = 0; i < userReservations.length; i++) {
+                await userReservations[i].updateOne({ userID: '10000' });
+            }
+
             res.status(200).json({ message: 'User deleted successfully' });
         } else {
             res.status(404).json({ message: 'User not found' });

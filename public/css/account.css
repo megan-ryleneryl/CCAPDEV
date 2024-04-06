@@ -150,6 +150,10 @@ input[type="submit"]:hover {
     font-family: var(--roboto);
 }
 
+#user-logout-button {
+    background-color: var(--dark-red) !important;
+}
+
 #reservations-banner,
 #profiles-banner {
     background-color: var(--dark-purple);

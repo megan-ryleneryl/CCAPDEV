@@ -60,7 +60,10 @@ async function getSlots(req, res) {
     let label = 'seats';
 
     try {
-        const reservations = await Reservation.find();
+        const reservations = await Reservation.find({
+            reservationID: { $ne: '20000' },
+            userID: { $ne: '10000' }
+        });
 
         // Search for user's slots with the given params
         // Else, search for all available slots given the params

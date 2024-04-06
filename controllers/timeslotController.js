@@ -18,7 +18,7 @@ async function getAllReservations (req, res) {
             lab = "1";
         }
 
-        const reservations = await Reservation.find({ date: date, lab: lab, reservationID: { $ne: '20000' } });
+        const reservations = await Reservation.find({ date: date, lab: lab, reservationID: { $ne: '20000' }, userID: { $ne: '10000'} });
 
         // Initialize the number of seats from 1 to 10
         for(let i = 1; i <= numberOfSeats; i++) {
