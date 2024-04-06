@@ -9,7 +9,7 @@ async function openSearch (req, res) {
         const timeslots = [];
         let names = [];
         const today = new Date();
-        const users = await User.find();
+        const users = await User.find({ userID: { $ne: '10000'} });
 
         // Get timeslots from 9:00AM to 5:30PM
         for (let hour = 9; hour <= 17; hour++) {
@@ -19,7 +19,7 @@ async function openSearch (req, res) {
             }
         }
 
-        // Get the names of all users except admin
+        // Get the names of all users except admin and deactivated
         users.forEach(user => {
             if(user.accType !== 'Lab Technician') {
                 names.push(user.name);
