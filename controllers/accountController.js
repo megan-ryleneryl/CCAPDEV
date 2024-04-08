@@ -223,8 +223,8 @@ async function deleteReservation(req, res) {
 
     if(receivedData) {
         try {
-            const reservation = await Reservation.findOne({ timeslot: receivedData[3], requestTime: receivedData[5] });
-        
+            const reservation = await Reservation.findOne({ seat: receivedData[1], date: receivedData[2], timeslot: receivedData[3], requestTime: receivedData[5] });
+
             if(reservation) {
                 // ReservationID = '20000' represents a deactivated reservation
                 await reservation.updateOne({ reservationID: '20000' });
