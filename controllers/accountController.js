@@ -1,7 +1,7 @@
 /* Import Models */
 const User = require('../models/User');
 const Reservation = require('../models/Reservation');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 /* Define Functions */
 async function getProfile(req, res) {

@@ -1,6 +1,6 @@
 /* Import Models */
 const User = require('../models/User.js');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 async function uploadUser(req, res) {
     const username = req.body.username;
