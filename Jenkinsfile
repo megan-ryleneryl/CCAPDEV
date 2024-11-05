@@ -22,6 +22,7 @@ pipeline {
             steps {
                 // sh 'npm test'
                 echo 'TODO: Prepare tests'
+                sh 'node app.js'
             }
         }
 
